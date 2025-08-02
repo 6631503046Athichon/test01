@@ -21,19 +21,12 @@
 
         <!-- Profile Content -->
         <div class="profile-page">
-            <!-- LIFF Profile Section -->
-            <section id="profile">
-                <img id="pictureUrl" src="https://mokmoon.com/images/ic_liff.png" alt="Profile Picture">
-                <p id="displayName"></p>
-                <p id="userId"></p>
-                <p id="statusMessage"></p>
-                <p id="email"></p>
-            </section>
-
-            <!-- Login/Logout Buttons -->
-            <div class="login-buttons" style="margin: 20px 0;">
-                <button id="btnLogIn" style="display: none;">Log In with LINE</button>
-                <button id="btnLogOut" style="display: none;">Log Out</button>
+            <div class="profile-header">
+                <div class="profile-avatar">
+                    <img src="../picture/sophia-avatar.svg" alt="Sophia Carter">
+                </div>
+                <h2 class="profile-name" id="userName">Sophia Carter</h2>
+                <p class="profile-id" id="userEmail">LINE ID: @sophia_carter</p>
             </div>
 
             <div class="profile-sections">
@@ -131,9 +124,5 @@
     </div>
 
     <script src="../scripts/app.js"></script>
-    <script>
-        // Call main() when page loads
-        document.addEventListener('DOMContentLoaded', main);
-    </script>
 </body>
 </html>

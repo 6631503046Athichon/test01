@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Artiply - Product Detail</title>
+    <title>Artiply - Profile</title>
     <script charset="utf-8" src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
     <link rel="stylesheet" href="../styles/main.css">
 </head>
@@ -15,85 +15,89 @@
                 <a href="index.html" class="back-btn">
             <img src="../picture/back.svg" alt="Back" width="24" height="24">
         </a>
-            </div>
-            <button class="share-btn" onclick="shareProduct()">
-                <img src="../picture/Share.svg" alt="Share" width="24" height="24">
-            </button>
-        </div>
-
-        <!-- Product Detail -->
-        <div class="product-detail">
-            <div class="product-preview-large">
-                <div class="logo-preview">
-                    <img src="../picture/borcelle-logo.svg" alt="Borcelle Cosmetics">
-                </div>
-            </div>
-
-            <div class="product-info">
-                <h1 class="product-title">Minimalist Logo</h1>
-                <p class="product-author">By Notty</p>
-                <p class="product-price">2000 THB</p>
-                <p class="product-description">Designed to suit a wide range of businesses, whether it's a clothing store, café, cosmetics brand, or creative studio.</p>
-                
-                <div class="action-buttons">
-                    <button class="btn btn-primary" onclick="buyNow()">Buy Now</button>
-                    <button class="btn btn-outline" onclick="addToCart()">Add to Cart</button>
-                </div>
-                
-                <div class="designer-note">
-                    <p>Looks like you like Notty's work, right? Why not get to know each other a bit? Add us on <a href="#" class="line-link">LINE!</a></p>
-                    <button class="btn btn-primary" onclick="addDesigner()">Add Notty</button>
-                </div>
+                <div class="header-title">Profile</div>
             </div>
         </div>
 
-        <!-- Payment Confirmation Modal -->
-        <div id="paymentModal" class="payment-modal">
-            <div class="payment-content">
-                <div class="payment-header">
-                    <button class="close-btn" onclick="closePayment()">×</button>
-                    <h3>Confirm Your Purchase</h3>
+        <!-- Profile Content -->
+        <div class="profile-page">
+            <div class="profile-header">
+                <div class="profile-avatar">
+                    <img src="../picture/sophia-avatar.svg" alt="Sophia Carter">
                 </div>
-                <div class="payment-body">
-                    <div class="design-summary">
-                        <h4>Design Summary</h4>
-                        <div class="summary-item">
-                            <div class="summary-info">
-                                <div class="summary-title">Minimalist Logo</div>
-                                <div class="summary-price">2000 THB</div>
+                <h2 class="profile-name" id="userName">Sophia Carter</h2>
+                <p class="profile-id" id="userEmail">LINE ID: @sophia_carter</p>
+            </div>
+
+            <div class="profile-sections">
+                <div class="profile-section">
+                    <h3 class="section-title">User Information</h3>
+                    <div class="info-list">
+                        <div class="info-item">
+                            <div class="info-icon">
+                                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M3.33333 3.33333H16.6667C17.5833 3.33333 18.3333 4.08333 18.3333 5V15C18.3333 15.9167 17.5833 16.6667 16.6667 16.6667H3.33333C2.41667 16.6667 1.66667 15.9167 1.66667 15V5C1.66667 4.08333 2.41667 3.33333 3.33333 3.33333Z" stroke="#666" stroke-width="1.5"/>
+                                    <path d="M18.3333 5L10 10.8333L1.66667 5" stroke="#666" stroke-width="1.5"/>
+                                </svg>
                             </div>
-                            <div class="summary-image">
-                                <img src="../picture/borcelle-logo.svg" alt="Borcelle Logo">
+                            <div class="info-content">
+                                <div class="info-label">Email</div>
+                                <div class="info-value">sophia.carter@email.com</div>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-icon">
+                                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M3.33333 5H16.6667C17.5833 5 18.3333 5.75 18.3333 6.66667V15C18.3333 15.9167 17.5833 16.6667 16.6667 16.6667H3.33333C2.41667 16.6667 1.66667 15.9167 1.66667 15V6.66667C1.66667 5.75 2.41667 5 3.33333 5Z" stroke="#666" stroke-width="1.5"/>
+                                    <path d="M5 8.33333H15" stroke="#666" stroke-width="1.5"/>
+                                    <path d="M5 11.6667H10" stroke="#666" stroke-width="1.5"/>
+                                </svg>
+                            </div>
+                            <div class="info-content">
+                                <div class="info-label">Bio</div>
+                                <div class="info-value">Bio: Design enthusiast</div>
                             </div>
                         </div>
                     </div>
-                    
-                    <div class="payment-methods">
-                        <h4>Payment Method</h4>
-                        <div class="payment-method active" onclick="selectPayment(this)">
-                            <div class="payment-method-info">LINE Pay</div>
-                            <div class="payment-method-check"></div>
+                </div>
+
+                <div class="profile-section">
+                    <h3 class="section-title">Usage Summary</h3>
+                    <div class="usage-list">
+                        <div class="usage-item">
+                            <div class="usage-icon">
+                                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M10 1.66667L12.575 6.88333L18.3333 7.725L14.1667 11.7833L15.15 17.5167L10 14.8167L4.85 17.5167L5.83333 11.7833L1.66667 7.725L7.425 6.88333L10 1.66667Z" stroke="#666" stroke-width="1.5"/>
+                                </svg>
+                            </div>
+                            <div class="usage-content">
+                                <div class="usage-title">Remaining Free Trials</div>
+                                <div class="usage-count">3</div>
+                            </div>
                         </div>
-                        
-                        <div class="payment-method" onclick="selectPayment(this)">
-                            <div class="payment-method-info">PromptPay</div>
-                            <div class="payment-method-check"></div>
+                        <div class="usage-item">
+                            <div class="usage-icon">
+                                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M5 5H15C16.1046 5 17 5.89543 17 7V15C17 16.1046 16.1046 17 15 17H5C3.89543 17 3 16.1046 3 15V7C3 5.89543 3.89543 5 5 5Z" stroke="#666" stroke-width="1.5"/>
+                                    <path d="M7 3V7" stroke="#666" stroke-width="1.5"/>
+                                    <path d="M13 3V7" stroke="#666" stroke-width="1.5"/>
+                                    <path d="M3 11H17" stroke="#666" stroke-width="1.5"/>
+                                </svg>
+                            </div>
+                            <div class="usage-content">
+                                <div class="usage-title">Purchased Designs</div>
+                                <div class="usage-count">15</div>
+                            </div>
                         </div>
                     </div>
-                    
-                    <div class="total-section">
-                        <h4>Total</h4>
-                        <div class="total-row">
-                            <span>Total</span>
-                            <span>2000 THB</span>
-                        </div>
-                        <div class="total-row vat">
-                            <span>VAT included</span>
-                        </div>
+                </div>
+
+                <div class="profile-section">
+                    <h3 class="section-title">Designer Status</h3>
+                    <div class="action-buttons-profile">
+                        <button class="btn-profile btn-become-designer" onclick="becomeDesigner()">Become a Designer</button>
+                        <button class="btn-profile btn-logout" onclick="logout()">Logout</button>
                     </div>
-                    
-                    <button class="btn btn-primary" onclick="confirmPayment()">Confirm Payment</button>
-                    <p class="redirect-note">You will be redirected to payment service.</p>
                 </div>
             </div>
         </div>
@@ -112,10 +116,10 @@
                 <img src="../picture/history-icon.svg" alt="History" width="24" height="24">
                 <span>History</span>
             </a>
-            <a href="profile.html" class="nav-item">
+            <div class="nav-item active">
                 <img src="../picture/profile-icon.svg" alt="Profile" width="24" height="24">
                 <span>Profile</span>
-            </a>
+            </div>
         </div>
     </div>
 
