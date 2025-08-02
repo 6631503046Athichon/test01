@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Artiply - Design Marketplace</title>
+    <script charset="utf-8" src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Dashboard/Home Page -->
+        <div id="dashboard" class="page active">
+            <div class="header">
+                <div class="header-left">
+                    <div class="header-title">Artiply</div>
+                </div>
+                <button class="header-icon" onclick="showCart()">🛒</button>
+            </div>
+
+            <div class="search-container">
+                <div class="search-bar">
+                    <span class="search-icon">🔍</span>
+                    <input type="text" class="search-input" placeholder="Search templates" oninput="searchDesigns(this.value)">
+                </div>
+            </div>
+
+            <div class="categories">
+                <button class="category-btn active" onclick="filterCategory('All')">All</button>
+                <button class="category-btn" onclick="filterCategory('Marketing')">Marketing</button>
+                <button class="category-btn" onclick="filterCategory('Education')">Education</button>
+                <button class="category-btn" onclick="filterCategory('Business')">Business</button>
+            </div>
+
+            <div class="featured-design">
+                <div class="featured-circle">
+                    <div class="leaf-design"></div>
+                </div>
+            </div>
+
+            <div class="suggestions-section">
+                <h2 class="section-title">Suggestion for you</h2>
+                <div class="design-grid" id="designGrid">
+                    <div class="design-card" onclick="showProductDetail('business')">
+                        <div class="design-image business">
+                            <div class="design-preview business-preview"></div>
+                        </div>
+                        <div class="design-info">
+                            <div class="design-title">Modern Business Presentation</div>
+                            <div class="design-author">
+                                <div class="author-avatar"></div>
+                                <span>By Notty</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="design-card" onclick="showProductDetail('wedding')">
+                        <div class="design-image wedding">
+                            <div class="design-preview wedding-preview"></div>
+                        </div>
+                        <div class="design-info">
+                            <div class="design-title">Elegant Wedding Invitation</div>
+                            <div class="design-author">
+                                <div class="author-avatar"></div>
+                                <span>By Notty</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Product Detail Page -->
+        <div id="productDetail" class="page">
+            <div class="header">
+                <div class="header-left">
+                    <button class="back-btn" onclick="showPage('dashboard')">←</button>
+                </div>
+                <button class="header-icon">↗</button>
+            </div>
+
+            <div class="product-detail">
+                <div class="product-preview-large">
+                    <div class="logo-preview">
+                        Lo<div class="logo-oval"></div>p
+                    </div>
+                </div>
+
+                <div class="product-info">
+                    <h1 class="product-title">Minimalist Logo</h1>
+                    <p class="product-price">2000 THB</p>
+                    <p class="product-description">Designed to suit a wide range of businesses, whether it's a clothing store, café, cosmetics brand, or creative studio.</p>
+                    
+                    <div class="action-buttons">
+                        <button class="btn btn-primary" onclick="buyNow()">Buy Now</button>
+                        <button class="btn btn-secondary" onclick="addToCart()">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Payment Confirmation Modal -->
+        <div id="paymentModal" class="payment-modal">
+            <div class="payment-content">
+                <div class="payment-header">
+                    <h3>Confirm Your Purchase</h3>
+                    <button class="back-btn" onclick="closePayment()">×</button>
+                </div>
+                <div class="payment-body">
+                    <div class="design-summary">
+                        <div class="summary-image">🏠</div>
+                        <div class="summary-info">
+                            <h4>Cozy Living Room Design</h4>
+                            <p class="summary-price">฿250</p>
+                        </div>
+                    </div>
+
+                    <div class="payment-methods">
+                        <h4 style="margin-bottom: 15px; color: #333;">Payment Method</h4>
+                        <div class="payment-method selected" onclick="selectPayment('linepay')">
+                            <div class="payment-method-info">
+                                <div class="payment-icon">L</div>
+                                <span>LINE Pay</span>
+                            </div>
+                            <div class="radio-btn selected"></div>
+                        </div>
+                        <div class="payment-method" onclick="selectPayment('promptpay')">
+                            <div class="payment-method-info">
+                                <div class="payment-icon">P</div>
+                                <span>PromptPay</span>
+                            </div>
+                            <div class="radio-btn"></div>
+                        </div>
+                    </div>
+
+                    <div class="total-section">
+                        <div class="total-row">
+                            <span>Total</span>
+                            <span>฿250</span>
+                        </div>
+                        <div class="total-row" style="font-size: 12px; color: #666;">
+                            <span>VAT Included</span>
+                            <span></span>
+                        </div>
+                    </div>
+
+                    <button class="btn btn-primary" style="width: 100%;" onclick="confirmPayment()">Confirm Payment</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Payment Success Page -->
+        <div id="paymentSuccess" class="page">
+            <div class="success-page">
+                <div class="success-icon">
+                    <div class="success-check">✓</div>
+                </div>
+                <h2 class="success-title">Payment Success!</h2>
+                <p class="success-subtitle">Your payment has been successfully done.</p>
+                
+                <div class="success-details">
+                    <div class="detail-row">
+                        <span>Amount</span>
+                        <span><strong>THB 1,126</strong></span>
+                    </div>
+                    <div class="detail-row">
+                        <span>Payment Status</span>
+                        <span class="status-success">Success</span>
+                    </div>
+                </div>
+
+                <button class="btn btn-secondary" style="margin-bottom: 15px;" onclick="downloadReceipt()">⬇ Get PDF Receipt</button>
+                <button class="btn btn-primary" onclick="showPage('dashboard')">Done</button>
+            </div>
+        </div>
+
+        <!-- My Designs Page -->
+        <div id="myDesigns" class="page">
+            <div class="header">
+                <div class="header-left">
+                    <div class="header-title">My Designs</div>
+                </div>
+                <button class="header-icon" onclick="showPage('upload')">+</button>
+            </div>
+
+            <div class="my-designs-header">
+                <div class="designs-tabs">
+                    <button class="designs-tab active">All</button>
+                    <button class="designs-tab">Free</button>
+                    <button class="designs-tab">Paid</button>
+                </div>
+                <input type="text" class="search-designs" placeholder="Search designs">
+            </div>
+
+            <div class="designs-list">
+                <div class="design-item">
+                    <div class="design-item-header">
+                        <div class="design-item-info">
+                            <h4>Minimalist Logo</h4>
+                            <p class="design-item-price">$15</p>
+                        </div>
+                        <div class="design-item-preview" style="background: #4A6741;">🎯</div>
+                    </div>
+                    <button class="download-btn">Download ⬇</button>
+                </div>
+
+                <div class="design-item">
+                    <div class="design-item-header">
+                        <div class="design-item-info">
+                            <h4>Modern Illustration</h4>
+                            <p style="color: #666;">Free</p>
+                        </div>
+                        <div class="design-item-preview" style="background: #E8C5C5;">🎨</div>
+                    </div>
+                    <button class="download-btn">Download ⬇</button>
+                </div>
+
+                <div class="design-item">
+                    <div class="design-item-header">
+                        <div class="design-item-info">
+                            <h4>Elegant Pattern</h4>
+                            <p class="design-item-price">$20</p>
+                        </div>
+                        <div class="design-item-preview" style="background: #4A6741;">🌿</div>
+                    </div>
+                    <button class="download-btn">Download ⬇</button>
+                </div>
+
+                <div class="design-item">
+                    <div class="design-item-header">
+                        <div class="design-item-info">
+                            <h4>Abstract Art</h4>
+                            <p style="color: #666;">Free</p>
+                        </div>
+                        <div class="design-item-preview" style="background: #E8C5C5;">〰</div>
+                    </div>
+                    <button class="download-btn">Download ⬇</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Cart Page -->
+        <div id="cart" class="page">
+            <div class="header">
+                <div class="header-left">
+                    <button class="back-btn" onclick="showPage('dashboard')">←</button>
+                    <div class="header-title">Your Cart</div>
+                </div>
+            </div>
+
+            <div class="cart-page">
+                <div class="cart-items" id="cartItems">
+                    <div class="cart-item">
+                        <div class="cart-item-image" style="background: #E8C5C5;">🏠</div>
+                        <div class="cart-item-info">
+                            <div class="cart-item-title">Modern Minimalist Living Room</div>
+                            <div class="cart-item-price">$25</div>
+                        </div>
+                        <button class="remove-btn" onclick="removeCartItem(0)">×</button>
+                    </div>
+
+                    <div class="cart-item">
+                        <div class="cart-item-image" style="background: #D4A574;">🛏</div>
+                        <div class="cart-item-info">
+                            <div class="cart-item-title">Cozy Bedroom Retreat</div>
+                            <div class="cart-item-price">$30</div>
+                        </div>
+                        <button class="remove-btn" onclick="removeCartItem(1)">×</button>
+                    </div>
+
+                    <div class="cart-item">
+                        <div class="cart-item-image" style="background: #72B572;">🍽</div>
+                        <div class="cart-item-info">
+                            <div class="cart-item-title">Contemporary Kitchen</div>
+                            <div class="cart-item-price">$20</div>
+                        </div>
+                        <button class="remove-btn" onclick="removeCartItem(2)">×</button>
+                    </div>
+                </div>
+
+                <div class="cart-summary">
+                    <div class="total-row">
+                        <span style="color: #666;">Subtotal</span>
+                        <span></span>
+                    </div>
+                    <div class="total-row" style="font-size: 12px; color: #999; margin-bottom: 15px;">
+                        <span>Taxes Included</span>
+                        <span></span>
+                    </div>
+                    <div class="total-row final">
+                        <span>$75</span>
+                        <span></span>
+                    </div>
+                    <button class="btn btn-primary" style="width: 100%; margin-top: 20px;" onclick="proceedToPayment()">Proceed to Payment</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Profile Page -->
+        <div id="profile" class="page">
+            <div class="header">
+                <div class="header-left">
+                    <button class="back-btn" onclick="showPage('dashboard')">←</button>
+                    <div class="header-title">Profile</div>
+                </div>
+            </div>
+
+            <div class="profile-page">
+                <div class="profile-header">
+                    <div class="profile-avatar" style="background-image: url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><circle cx=%2250%22 cy=%2240%22 r=%2215%22 fill=%22%23333%22/><path d=%22M20 80 Q50 60 80 80%22 fill=%22%23333%22/></svg>');"></div>
+                    <h2 class="profile-name" id="userName">Sophia Carter</h2>
+                    <p class="profile-email" id="userEmail">LINE ID: @sophia_carter</p>
+                </div>
+
+                <div class="profile-sections">
+                    <div class="profile-section">
+                        <h3 class="section-header">User Information</h3>
+                        <div class="info-grid">
+                            <div class="info-item">
+                                <div class="info-label">Email</div>
+                                <div class="info-value">sophia.carter@email.com</div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-label">Bio</div>
+                                <div class="info-value">Bio: Design enthusiast</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="profile-section">
+                        <h3 class="section-header">Usage Summary</h3>
+                        <div class="usage-item">
+                            <div class="usage-icon">⭐</div>
+                            <div class="usage-info">
+                                <div class="usage-title">Remaining Free Trials</div>
+                                <div class="usage-count">5</div>
+                            </div>
+                        </div>
+                        <div class="usage-item">
+                            <div class="usage-icon">📦</div>
+                            <div class="usage-info">
+                                <div class="usage-title">Purchased Designs</div>
+                                <div class="usage-count">15</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="profile-section">
+                        <h3 class="section-header">Designer Status</h3>
+                        <button class="btn btn-secondary" style="width: 100%;" onclick="becomeDesigner()">Become a Designer</button>
+                        <button class="btn btn-secondary" style="width: 100%; margin-top: 10px; background: #f0f0f0;" onclick="logout()">Logout</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Earnings & Payout History Page -->
+        <div id="earnings" class="page">
+            <div class="header">
+                <div class="header-left">
+                    <button class="back-btn" onclick="showPage('profile')">←</button>
+                    <div class="header-title">Earnings & Payout History</div>
+                </div>
+            </div>
+
+            <div class="earnings-history">
+                <div class="balance-card">
+                    <div class="balance-title">Current Balance</div>
+                    <div class="balance-amount">$0.00</div>
+                    <div class="payout-info">
+                        <span>Payout Method: LINE Pay</span>
+                        <div class="line-pay-badge">LINE PAY</div>
+                    </div>
+                    <div class="payout-info" style="margin-top: 10px;">
+                        <span>Last Payout Date</span>
+                        <span>July 15, 2024</span>
+                    </div>
+                    <div class="payout-info">
+                        <span>Next Scheduled Payout</span>
+                        <span>August 1, 2024</span>
+                    </div>
+                </div>
+
+                <div class="transaction-list">
+                    <h3 style="margin-bottom: 20px; color: #333;">Transaction History</h3>
+                    
+                    <div class="transaction-item">
+                        <div class="transaction-info">
+                            <h4>July 15, 2024</h4>
+                            <p class="transaction-date">Payout Paid</p>
+                            <p class="transaction-date">Reference: 1234567890</p>
+                        </div>
+                        <div class="transaction-amount">
+                            <div class="amount-value">-$500.00</div>
+                        </div>
+                    </div>
+
+                    <div class="transaction-item">
+                        <div class="transaction-info">
+                            <h4>June 30, 2024</h4>
+                            <p class="transaction-date">Payout Paid</p>
+                            <p class="transaction-date">Reference: 9876543210</p>
+                        </div>
+                        <div class="transaction-amount">
+                            <div class="amount-value">-$750.00</div>
+                        </div>
+                    </div>
+
+                    <div class="transaction-item">
+                        <div class="transaction-info">
+                            <h4>June 15, 2024</h4>
+                            <p class="transaction-date">Status: Failed</p>
+                            <p class="transaction-date">Reference: 5555555555</p>
+                        </div>
+                        <div class="transaction-amount">
+                            <div class="amount-value">-$250.00</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Enhanced Profile with Earnings -->
+        <div id="profileEarnings" class="page">
+            <div class="header">
+                <div class="header-left">
+                    <button class="back-btn" onclick="showPage('dashboard')">←</button>
+                    <div class="header-title">Profile</div>
+                </div>
+            </div>
+
+            <div class="profile-page">
+                <div class="profile-header">
+                    <div class="profile-avatar" style="background-image: url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><circle cx=%2250%22 cy=%2240%22 r=%2215%22 fill=%22%23333%22/><path d=%22M20 80 Q50 60 80 80%22 fill=%22%23333%22/></svg>');"></div>
+                    <h2 class="profile-name">Sophia Carter</h2>
+                    <p class="profile-email">sophia.carter@email.com</p>
+                </div>
+
+                <div class="profile-sections">
+                    <div class="profile-section">
+                        <h3 class="section-header">Personal Info</h3>
+                        <div class="info-grid">
+                            <div class="info-item">
+                                <div class="info-label">Name</div>
+                                <div class="info-value">Sophia Carter</div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-label">Email</div>
+                                <div class="info-value">sophia.carter@email.com</div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-label">Phone</div>
+                                <div class="info-value">+1 (555) 123-4567</div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-label">Location</div>
+                                <div class="info-value">San Francisco, CA</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="earnings-section">
+                        <h3 class="section-header" style="color: white;">Earnings Summary</h3>
+                        <div class="earnings-grid">
+                            <div class="earnings-item">
+                                <div class="earnings-amount">$12,500</div>
+                                <div class="earnings-label">Total Earnings</div>
+                            </div>
+                            <div class="earnings-item">
+                                <div class="earnings-amount">15%</div>
+                                <div class="earnings-label">Commission Rate</div>
+                            </div>
+                        </div>
+
+                        <div class="earnings-chart">
+                            <div class="chart-title">Monthly Earnings</div>
+                            <div class="chart-container">
+                                <div class="chart-bar" style="height: 40%;"></div>
+                                <div class="chart-bar" style="height: 60%;"></div>
+                                <div class="chart-bar" style="height: 30%;"></div>
+                                <div class="chart-bar" style="height: 80%;"></div>
+                                <div class="chart-bar" style="height: 90%;"></div>
+                                <div class="chart-bar" style="height: 100%;"></div>
+                            </div>
+                            <div class="chart-labels">
+                                <span>Jan</span>
+                                <span>Feb</span>
+                                <span>Mar</span>
+                                <span>Apr</span>
+                                <span>May</span>
+                                <span>Jun</span>
+                            </div>
+                            <div class="monthly-summary">
+                                <div class="monthly-amount">$2,500</div>
+                                <div class="monthly-change">Last 6 Months +10%</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Upload Design Page -->
+        <div id="upload" class="page">
+            <div class="header">
+                <div class="header-left">
+                    <button class="back-btn" onclick="showPage('myDesigns')">←</button>
+                    <div class="header-title">Upload Design</div>
+                </div>
+            </div>
+
+            <div class="upload-page">
+                <div class="upload-content">
+                    <div class="upload-area" onclick="document.getElementById('fileInput').click()">
+                        <div class="upload-icon">📁</div>
+                        <div class="upload-text">Upload your design template</div>
+                        <div class="upload-subtext">Accepts images or ZIP files<br>Drag and drop or click to upload</div>
+                    </div>
+
+                    <form id="uploadForm">
+                        <div class="form-group">
+                            <label class="form-label">Design Title</label>
+                            <input type="text" class="form-input" placeholder="Enter design title" required>
+                        </div>
+
+                        <div class="form-group" style="position: relative;">
+                            <label class="form-label">Design Category</label>
+                            <select class="form-input" required>
+                                <option value="">Select</option>
+                                <option value="marketing">Marketing</option>
+                                <option value="education">Education</option>
+                                <option value="business">Business</option>
+                                <option value="social">Social Media</option>
+                            </select>
+                            <span class="dropdown-arrow">▼</span>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Price (THB or Credit)</label>
+                            <input type="text" class="form-input" placeholder="Enter price">
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Short Description</label>
+                            <textarea class="form-input" rows="4" placeholder="Describe your design..."></textarea>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary" style="width: 100%;">Upload Design</button>
+                    </form>
+
+                    <input type="file" id="fileInput" style="display: none;" accept=".jpg,.jpeg,.png,.pdf,.zip" onchange="handleFileSelect(this)">
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom Navigation -->
+        <div class="bottom-nav">
+            <div class="nav-item active" onclick="showPage('dashboard')">
+                <span class="nav-icon">🏠</span>
+                <span>Dashboard</span>
+            </div>
+            <div class="nav-item" onclick="showPage('myDesigns')">
+                <span class="nav-icon">✏️</span>
+                <span>My Designs</span>
+            </div>
+            <div class="nav-item" onclick="showPage('upload')">
+                <span class="nav-icon">➕</span>
+                <span></span>
+            </div>
+            <div class="nav-item" onclick="showPage('earnings')">
+                <span class="nav-icon">💰</span>
+                <span>History</span>
+            </div>
+            <div class="nav-item" onclick="showPage('profile')">
+                <span class="nav-icon">👤</span>
+                <span>Profile</span>
+            </div>
+        </div>
+    </div>
+
+    <script src="scripts/app.js"></script>
+</body>
+</html>
