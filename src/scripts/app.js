@@ -43,9 +43,36 @@ function findCartItem(productTitle) {
 let currentProduct = null;
 
 // Initialize LIFF
-async function initializeLiff() {
+async function main() {
     try {
-        await liff.init({ liffId: '2007868119-pAKjVanQ' });
+        await liff.init({ 
+            liffId: '2007868119-pAKjVanQ',
+            scope: ["profile", "openid", "email"]
+        });
+        
+        // Check if running in LINE or external browser
+        if (!liff.isInClient()) {
+            if (liff.isLoggedIn()) {
+                document.getElementById('btnLogIn').style.display = "none";
+                document.getElementById('btnLogOut').style.display = "block";
+                getUserProfile();
+            } else {
+                document.getElementById('btnLogIn').style.display = "block";
+                document.getElementById('btnLogOut').style.display = "none";
+            }
+        } else {
+            getUserProfile();
+        }
+
+        // Add button event listeners
+        document.getElementById('btnLogIn').onclick = () => {
+            liff.login();
+        };
+        
+        document.getElementById('btnLogOut').onclick = () => {
+            liff.logout();
+            window.location.reload();
+        };
         console.log('LIFF init succeeded');
         
         // เปลี่ยนสีพื้นหลังตาม OS
@@ -150,10 +177,21 @@ async function shareToLine(imageUrl, altText = "") {
     }
 }
 
-function updateUserProfile() {
-    if (liffProfile) {
-        document.getElementById('userName').textContent = liffProfile.displayName;
-        document.getElementById('userEmail').textContent = "LINE ID: @" + liffProfile.userId;
+async function getUserProfile() {
+    try {
+        const profile = await liff.getProfile();
+        const idToken = await liff.getDecodedIDToken();
+
+        // Update profile elements
+        document.getElementById('pictureUrl').src = profile.pictureUrl;
+        document.getElementById('userId').innerHTML = "<b>userId:</b> " + profile.userId;
+        document.getElementById('displayName').innerHTML = "<b>displayName:</b> " + profile.displayName;
+        document.getElementById('statusMessage').innerHTML = "<b>statusMessage:</b> " + profile.statusMessage;
+        document.getElementById('email').innerHTML = "<b>email:</b> " + (idToken.email || "Email not available");
+
+        console.log('Profile updated successfully');
+    } catch (error) {
+        console.log('Error getting profile:', error);
     }
 }
 
@@ -939,10 +977,26 @@ function showDesignerProfile() {
     }
 }
 
-function logout() {
+async function logout() {
     if (confirm('Are you sure you want to logout?')) {
-        alert('Logged out successfully');
-        // Here you would handle the actual logout
+        try {
+            if (typeof liff !== 'undefined') {
+                if (liff.isLoggedIn()) {
+                    // ล็อกเอาท์จาก LIFF
+                    liff.logout();
+                    console.log('Logged out from LIFF');
+                }
+            }
+            // ล้างข้อมูลใน localStorage
+            localStorage.clear();
+            
+            // รีเฟรชหน้าเว็บ
+            window.location.reload();
+            
+        } catch (error) {
+            console.log('Logout error:', error);
+            alert('Logout failed. Please try again.');
+        }
     }
 }
 
@@ -1362,48 +1416,94 @@ document.addEventListener('click', function(e) {
 
 // Add Designer Function
 function addDesigner() {
-    alert('Opening LINE to add Notty...');
-    // Here you would implement the actual LINE integration
+    // LINE OA ID หรือ LINE ID ของร้านค้า
+    const lineId = "@artiply"; // แก้เป็น LINE ID จริงของร้าน
+    
+    try {
+        if (typeof liff !== 'undefined' && liff.isInClient()) {
+            // ถ้าเปิดใน LINE app ใช้ URL scheme
+            liff.openWindow({
+                url: `line://ti/p/${lineId}`,
+                external: false
+            });
+        } else {
+            // ถ้าเปิดในเบราว์เซอร์
+            window.open(`https://line.me/R/ti/p/${lineId}`, '_blank');
+        }
+    } catch (error) {
+        console.log('Error adding friend:', error);
+        // Fallback URL
+        window.open(`https://line.me/R/ti/p/${lineId}`, '_blank');
+    }
 }
 
 // Share Product Function
 async function shareProduct() {
-    const productTitle = document.querySelector('.product-title')?.textContent || 'Design';
-    const productPrice = document.querySelector('.product-price')?.textContent || '';
-    const productAuthor = document.querySelector('.product-author')?.textContent || 'Designer';
-    
     try {
-        // ถ้าเปิดใน LINE ให้ใช้ LIFF Share
-        if (typeof liff !== 'undefined' && liff.isInClient()) {
-            await liff.shareTargetPicker([{
-                type: "text",
-                text: `🎨 ${productTitle}\n\n` +
-                      `💰 ${productPrice}\n` +
-                      `👨‍🎨 By: ${productAuthor}\n\n` +
-                      `View on Artiply: ${window.location.href}`
-            }]);
+        const productTitle = document.querySelector('.product-title')?.textContent || 'Design';
+        const productPrice = document.querySelector('.product-price')?.textContent || '';
+        const productImage = document.querySelector('.design-item-preview')?.style.backgroundImage?.replace('url("', '').replace('")', '') || 'https://via.placeholder.com/300';
+        
+        // ใช้ LIFF Share Target Picker
+        if (typeof liff !== 'undefined') {
+            await liff.shareTargetPicker([
+                {
+                    type: "flex",
+                    altText: `Check out ${productTitle} on Artiply`,
+                    contents: {
+                        type: "bubble",
+                        hero: {
+                            type: "image",
+                            url: productImage,
+                            size: "full",
+                            aspectRatio: "1:1",
+                            aspectMode: "cover"
+                        },
+                        body: {
+                            type: "box",
+                            layout: "vertical",
+                            contents: [
+                                {
+                                    type: "text",
+                                    text: productTitle,
+                                    weight: "bold",
+                                    size: "xl"
+                                },
+                                {
+                                    type: "text",
+                                    text: productPrice,
+                                    size: "lg",
+                                    color: "#555555",
+                                    margin: "md"
+                                }
+                            ]
+                        },
+                        footer: {
+                            type: "box",
+                            layout: "vertical",
+                            contents: [
+                                {
+                                    type: "button",
+                                    style: "primary",
+                                    action: {
+                                        type: "uri",
+                                        label: "View Details",
+                                        uri: window.location.href
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                }
+            ]);
             console.log('Shared via LINE');
             return;
         }
     } catch (error) {
         console.log('LINE share failed:', error);
-    }
     
-    // Fallback: ใช้ Web Share API หรือ clipboard
-    if (navigator.share) {
-        // Use native share API if available
-        navigator.share({
-            title: productTitle,
-            text: `Check out this ${productTitle} for ${productPrice}`,
-            url: window.location.href
-        }).catch(err => console.log('Error sharing:', err));
-    } else {
-        // Fallback for browsers without native share
-        const shareText = `Check out this ${productTitle} for ${productPrice}\n${window.location.href}`;
-        
-        if (navigator.clipboard) {
-            navigator.clipboard.writeText(shareText).then(() => {
-                alert('Link copied to clipboard!');
+    // ถ้าไม่สามารถใช้ LIFF Share ได้
+    alert('Please open in LINE to share');
             }).catch(err => {
                 console.log('Error copying to clipboard:', err);
                 fallbackShare(shareText);
