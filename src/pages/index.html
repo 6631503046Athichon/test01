@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Artiply - Dashboard</title>
+    <script charset="utf-8" src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
+    <link rel="stylesheet" href="../styles/main.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Search Section -->
+        <div class="search-container">
+            <div class="search-bar">
+                <img src="../picture/search-icon.svg" alt="Search" width="24" height="24">
+                <input type="text" class="search-input" placeholder="Search templates">
+            </div>
+        </div>
+
+        <!-- Dashboard Header -->
+        <div class="header">
+            <div class="header-left">
+                <div class="header-title">Artiply</div>
+            </div>
+            <div class="header-right">
+                <a href="cart.html" class="cart-btn">
+                    <img src="../picture/cart-icon.svg" alt="Cart" width="24" height="24">
+                </a>
+            </div>
+        </div>
+
+        <!-- Categories -->
+        <div class="categories">
+            <button class="category-btn active">All</button>
+            <button class="category-btn">Marketing</button>
+            <button class="category-btn">Education</button>
+            <button class="category-btn">Business</button>
+        </div>
+
+        <!-- Featured Design -->
+        <div class="featured-design">
+            <div class="featured-rectangle">
+                <img src="../picture/Tree.svg" alt="Tree" style="width: 100%; height: 100%; object-fit: cover; border-radius: 12px;">
+            </div>
+        </div>
+
+        <!-- Design Suggestions -->
+        <div class="suggestions-section">
+            <h2 class="section-title">Suggestion for you</h2>
+            <div class="design-grid" id="designGrid">
+                <!-- Business Design -->
+                <a href="product-detail.html" class="design-card" data-category="business" data-keywords="business presentation corporate modern mod modular template">
+                    <div class="design-image business">
+                        <div class="design-preview" style="background: #4A6741; padding: 15px; border-radius: 12px;">
+                            <div style="background: white; border-radius: 8px; padding: 10px; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;">
+                                <img src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 150 100'><defs><linearGradient id='mountain' x1='0%' y1='0%' x2='100%' y2='100%'><stop offset='0%' style='stop-color:%2387CEEB;stop-opacity:1' /><stop offset='50%' style='stop-color:%23228B22;stop-opacity:1' /><stop offset='100%' style='stop-color:%234169E1;stop-opacity:1' /></linearGradient></defs><rect width='150' height='100' fill='%2387CEEB'/><polygon points='0,80 30,40 60,60 90,30 120,50 150,20 150,100 0,100' fill='url(%23mountain)'/><polygon points='20,85 40,70 60,75 80,65 100,70 120,60 140,65 150,70 150,100 0,100' fill='%234169E1'/><circle cx='30' cy='25' r='8' fill='%23FFD700'/></svg>" alt="Mountain Lake" style="width: 100%; height: 100%; object-fit: cover; border-radius: 4px;">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="design-info">
+                        <div class="design-title">Modern Business Presentation</div>
+                        <div class="design-author">
+                            <div class="author-avatar"></div>
+                            <span>By Notty</span>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Marketing Design -->
+                <a href="product-detail.html" class="design-card" data-category="marketing" data-keywords="marketing social media promotion poster">
+                    <div class="design-image marketing">
+                        <div class="design-preview" style="background: #FF6B6B; padding: 15px; border-radius: 12px;">
+                            <div style="background: white; border-radius: 8px; padding: 10px; width: 100%; height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+                                <div style="background: #FF6B6B; color: white; padding: 8px 16px; border-radius: 20px; font-size: 10px; font-weight: bold; margin-bottom: 8px;">
+                                    SALE 50%
+                                </div>
+                                <div style="color: #333; font-size: 12px; text-align: center;">
+                                    <div style="font-weight: bold;">Summer Collection</div>
+                                    <div style="font-size: 8px; margin-top: 4px;">Limited Time Offer</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="design-info">
+                        <div class="design-title">Marketing Campaign Poster</div>
+                        <div class="design-author">
+                            <div class="author-avatar"></div>
+                            <span>By Sarah</span>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Education Design -->
+                <a href="product-detail.html" class="design-card" data-category="education" data-keywords="education learning school presentation academic">
+                    <div class="design-image education">
+                        <div class="design-preview" style="background: #4ECDC4; padding: 15px; border-radius: 12px;">
+                            <div style="background: white; border-radius: 8px; padding: 10px; width: 100%; height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+                                <div style="font-size: 16px; margin-bottom: 8px;">📚</div>
+                                <div style="color: #333; font-size: 10px; text-align: center; font-weight: bold;">
+                                    ONLINE COURSE
+                                </div>
+                                <div style="color: #666; font-size: 8px; margin-top: 4px;">
+                                    Web Development
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="design-info">
+                        <div class="design-title">Education Course Template</div>
+                        <div class="design-author">
+                            <div class="author-avatar"></div>
+                            <span>By Mike</span>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Wedding Design -->
+                <a href="product-detail.html" class="design-card" data-category="business" data-keywords="wedding invitation elegant celebration">
+                    <div class="design-image wedding">
+                        <div class="design-preview" style="background: #E8C5C5; padding: 15px; border-radius: 12px;">
+                            <div style="background: white; border-radius: 8px; padding: 15px; width: 100%; height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; position: relative;">
+                                <!-- Decorative leaves top -->
+                                <div style="position: absolute; top: 10px; left: 10px;">
+                                    <svg width="20" height="15" viewBox="0 0 20 15">
+                                        <path d="M2 8 Q5 5 8 8 Q11 5 14 8 Q17 5 20 8" stroke="#90C695" stroke-width="1" fill="none"/>
+                                        <path d="M1 12 Q4 9 7 12 Q10 9 13 12 Q16 9 19 12" stroke="#90C695" stroke-width="1" fill="none"/>
+                                    </svg>
+                                </div>
+                                <!-- Decorative leaves bottom -->
+                                <div style="position: absolute; bottom: 10px; right: 10px;">
+                                    <svg width="20" height="15" viewBox="0 0 20 15">
+                                        <path d="M2 8 Q5 5 8 8 Q11 5 14 8 Q17 5 20 8" stroke="#90C695" stroke-width="1" fill="none"/>
+                                        <path d="M1 12 Q4 9 7 12 Q10 9 13 12 Q16 9 19 12" stroke="#90C695" stroke-width="1" fill="none"/>
+                                    </svg>
+                                </div>
+                                <!-- Main text -->
+                                <div style="text-align: center; color: #A67B5A; font-family: serif;">
+                                    <div style="font-size: 8px; margin-bottom: 2px;">SAVE THE DATE</div>
+                                    <div style="font-size: 10px; font-weight: bold; margin-bottom: 1px;">FOR THE</div>
+                                    <div style="font-size: 12px; font-weight: bold;">WEDDING</div>
+                                    <div style="font-size: 8px; margin-top: 2px;">OF</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="design-info">
+                        <div class="design-title">Elegant Wedding Invitation</div>
+                        <div class="design-author">
+                            <div class="author-avatar"></div>
+                            <span>By Notty</span>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Marketing Design 2 -->
+                <a href="product-detail.html" class="design-card" data-category="marketing" data-keywords="marketing instagram story social media brand">
+                    <div class="design-image marketing">
+                        <div class="design-preview" style="background: #FFD93D; padding: 15px; border-radius: 12px;">
+                            <div style="background: white; border-radius: 8px; padding: 10px; width: 100%; height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+                                <div style="color: #FFD93D; font-size: 16px; margin-bottom: 4px;">⭐</div>
+                                <div style="color: #333; font-size: 9px; text-align: center; font-weight: bold;">
+                                    NEW COLLECTION
+                                </div>
+                                <div style="color: #666; font-size: 8px; margin-top: 2px;">
+                                    Follow us @brand
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="design-info">
+                        <div class="design-title">Instagram Story Template</div>
+                        <div class="design-author">
+                            <div class="author-avatar"></div>
+                            <span>By Emma</span>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Education Design 2 -->
+                <a href="product-detail.html" class="design-card" data-category="education" data-keywords="education certificate achievement diploma">
+                    <div class="design-image education">
+                        <div class="design-preview" style="background: #9B59B6; padding: 15px; border-radius: 12px;">
+                            <div style="background: white; border-radius: 8px; padding: 10px; width: 100%; height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; border: 2px solid #9B59B6;">
+                                <div style="color: #9B59B6; font-size: 12px; font-weight: bold; text-align: center;">
+                                    CERTIFICATE
+                                </div>
+                                <div style="color: #333; font-size: 8px; margin-top: 4px;">
+                                    of Achievement
+                                </div>
+                                <div style="width: 20px; height: 1px; background: #9B59B6; margin: 4px 0;"></div>
+                                <div style="color: #666; font-size: 7px;">
+                                    Student Name
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="design-info">
+                        <div class="design-title">Certificate Template</div>
+                        <div class="design-author">
+                            <div class="author-avatar"></div>
+                            <span>By Alex</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <!-- Bottom Navigation -->  
+        <div class="bottom-nav">
+            <div class="nav-item active">
+                <img src="../picture/home-icon.svg" alt="Home" width="24" height="24">
+                <span>Dashboard</span>
+            </div>
+            <a href="my-designs.html" class="nav-item">
+                <img src="../picture/design-icon.svg" alt="Design" width="24" height="24">
+                <span>My Designs</span>
+            </a>
+            <a href="earnings.html" class="nav-item">
+                <img src="../picture/history-icon.svg" alt="History" width="24" height="24">
+                <span>History</span>
+            </a>
+            <a href="profile.html" class="nav-item">
+                <img src="../picture/profile-icon.svg" alt="Profile" width="24" height="24">
+                <span>Profile</span>
+            </a>
+        </div>
+    </div>
+
+    <script src="../scripts/app.js"></script>
+</body>
+</html>
