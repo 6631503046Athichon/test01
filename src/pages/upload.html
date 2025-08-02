@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Design - Artiply</title>
+    <script charset="utf-8" src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
+    <link rel="stylesheet" href="../styles/main.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <div class="header-left">
+                <a href="my-designs.html" class="back-btn">
+                    <img src="../picture/back.svg" alt="Back" width="24" height="24">
+                </a>
+                <div class="header-title">Upload Design</div>
+            </div>
+        </div>
+
+        <!-- Upload Form -->
+        <div class="upload-section">
+            <div class="upload-area" onclick="document.getElementById('fileInput').click()">
+                <div class="upload-icon">📁</div>
+                <div class="upload-text">Upload your design template</div>
+                <div class="upload-subtext">Accepts images or ZIP files<br>Drag and drop or click to upload</div>
+            </div>
+
+            <form id="uploadForm" class="upload-form">
+                <input type="file" id="fileInput" style="display: none" accept="image/*,.zip" onchange="handleFileSelect(this)">
+                
+                <div class="form-group">
+                    <label for="designTitle">Design Title</label>
+                    <input type="text" id="designTitle" name="title" placeholder="Enter design title" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="designDescription">Description</label>
+                    <textarea id="designDescription" name="description" rows="4" placeholder="Describe your design" required></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="designCategory">Category</label>
+                    <select id="designCategory" name="category" required>
+                        <option value="">Select Category</option>
+                        <option value="business">Business</option>
+                        <option value="marketing">Marketing</option>
+                        <option value="education">Education</option>
+                        <option value="wedding">Wedding</option>
+                        <option value="social">Social Media</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="designPrice">Price (THB)</label>
+                    <input type="number" id="designPrice" name="price" placeholder="0" min="0" required>
+                </div>
+                
+                <div class="form-group">
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="designFree" name="free">
+                        <label for="designFree">Make this design free</label>
+                    </div>
+                </div>
+                
+                <button type="submit" class="btn btn-primary upload-btn">Upload Design</button>
+            </form>
+        </div>
+
+        <!-- Bottom Navigation -->
+        <div class="bottom-nav">
+            <a href="index.html" class="nav-item">
+                <img src="../picture/home-icon.svg" alt="Home" width="24" height="24">
+                <span>Dashboard</span>
+            </a>
+            <a href="my-designs.html" class="nav-item">
+                <img src="../picture/design-icon.svg" alt="Design" width="24" height="24">
+                <span>My Designs</span>
+            </a>
+            <a href="earnings.html" class="nav-item">
+                <img src="../picture/history-icon.svg" alt="History" width="24" height="24">
+                <span>History</span>
+            </a>
+            <a href="profile.html" class="nav-item">
+                <img src="../picture/profile-icon.svg" alt="Profile" width="24" height="24">
+                <span>Profile</span>
+            </a>
+        </div>
+    </div>
+
+    <script src="../scripts/app.js"></script>
+</body>
+</html>
