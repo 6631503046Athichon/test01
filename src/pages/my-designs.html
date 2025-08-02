@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Artiply - My Designs</title>
+    <script charset="utf-8" src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
+    <link rel="stylesheet" href="../styles/main.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <div class="header-left">
+                <a href="index.html" class="back-btn">
+                    <img src="../picture/back.svg" alt="Back" width="24" height="24">
+                </a>
+                <div class="header-title">My Designs</div>
+            </div>
+            <a href="upload.html" class="add-design-btn">
+                <img src="../picture/add-icon.svg" alt="Add Design" width="24" height="24">
+            </a>
+        </div>
+
+        <!-- Tabs and Search -->
+        <div class="my-designs-header">
+            <div class="designs-tabs">
+                <button class="designs-tab active">All</button>
+                <button class="designs-tab">Free</button>
+                <button class="designs-tab">Paid</button>
+            </div>
+            <input type="text" class="search-designs" placeholder="Search designs">
+        </div>
+
+        <!-- Designs List -->
+        <div class="designs-list">
+            <div class="design-item" data-type="paid" data-keywords="minimalist logo brand business modern">
+                <div class="design-item-header">
+                    <div class="design-item-info">
+                        <h4>Design 1</h4>
+                        <p style="font-weight: 600; color: #333; margin-bottom: 2px;">Minimalist Logo</p>
+                        <p class="design-item-price">1500 THB</p>
+                    </div>
+                    <div class="design-item-preview" style="background: #2F5233; color: white; font-size: 24px; display: flex; align-items: center; justify-content: center;">
+                        <span style="font-family: serif; font-weight: bold;">N</span>
+                    </div>
+                </div>
+                <button class="download-btn">Download</button>
+            </div>
+
+            <div class="design-item" data-type="free" data-keywords="modern illustration art creative free">
+                <div class="design-item-header">
+                    <div class="design-item-info">
+                        <h4>Design 2</h4>
+                        <p style="font-weight: 600; color: #333; margin-bottom: 2px;">Modern Illustration</p>
+                        <p style="color: #666;">Free</p>
+                    </div>
+                    <div class="design-item-preview" style="background: linear-gradient(135deg, #D4A574 0%, #E8C5C5 100%); display: flex; align-items: center; justify-content: center;">
+                        <svg width="30" height="20" viewBox="0 0 60 40">
+                            <path d="M10 30 Q20 15 30 20 T50 25" stroke="white" stroke-width="3" fill="none"/>
+                            <path d="M15 35 Q25 25 35 28 T50 30" stroke="white" stroke-width="2" fill="none"/>
+                        </svg>
+                    </div>
+                </div>
+                <button class="download-btn">Download </button>
+            </div>
+
+            <div class="design-item" data-type="paid" data-keywords="elegant pattern design art premium">
+                <div class="design-item-header">
+                    <div class="design-item-info">
+                        <h4>Design 3</h4>
+                        <p style="font-weight: 600; color: #333; margin-bottom: 2px;">Elegant Pattern</p>
+                        <p class="design-item-price">200 THB</p>
+                    </div>
+                    <div class="design-item-preview" style="background: #2F5233; color: white; display: flex; align-items: center; justify-content: center;">
+                        <svg width="30" height="30" viewBox="0 0 50 50">
+                            <path d="M25 10 L25 40 M15 15 Q25 10 25 25 M35 15 Q25 10 25 25 M15 35 Q25 30 25 40 M35 35 Q25 30 25 40" stroke="white" stroke-width="2" fill="none"/>
+                        </svg>
+                    </div>
+                </div>
+                <button class="download-btn">Download </button>
+            </div>
+
+            <div class="design-item" data-type="free" data-keywords="abstract art creative modern free">
+                <div class="design-item-header">
+                    <div class="design-item-info">
+                        <h4>Design 4</h4>
+                        <p style="font-weight: 600; color: #333; margin-bottom: 2px;">Abstract Art</p>
+                        <p style="color: #666;">Free</p>
+                    </div>
+                    <div class="design-item-preview" style="background: linear-gradient(135deg, #D4A574 0%, #E8C5C5 100%); display: flex; align-items: center; justify-content: center;">
+                        <svg width="30" height="20" viewBox="0 0 60 40">
+                            <path d="M10 20 Q30 10 50 20 Q30 30 10 20" stroke="white" stroke-width="3" fill="none"/>
+                        </svg>
+                    </div>
+                </div>
+                <button class="download-btn">Download </button>
+            </div>
+        </div>
+
+        <!-- Bottom Navigation -->
+        <div class="bottom-nav">
+            <a href="index.html" class="nav-item">
+                <img src="../picture/home-icon.svg" alt="Home" width="24" height="24">
+                <span>Dashboard</span>
+            </a>
+            <div class="nav-item active">
+                <img src="../picture/design-icon.svg" alt="Design" width="24" height="24">
+                <span>My Designs</span>
+            </div>
+            <a href="earnings.html" class="nav-item">
+                <img src="../picture/history-icon.svg" alt="History" width="24" height="24">
+                <span>History</span>
+            </a>
+            <a href="profile.html" class="nav-item">
+                <img src="../picture/profile-icon.svg" alt="Profile" width="24" height="24">
+                <span>Profile</span>
+            </a>
+        </div>
+    </div>
+
+    <script src="../scripts/app.js"></script>
+</body>
+</html>

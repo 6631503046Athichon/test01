@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Artiply - Payment Success</title>
+    <script charset="utf-8" src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
+    <link rel="stylesheet" href="../styles/main.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Payment Success Page -->
+        <div class="success-page">
+            <div class="success-icon-container">
+                <div class="success-icon">
+                    <div class="success-check">✓</div>
+                </div>
+            </div>
+            
+            <h1 class="success-title">Payment Success!</h1>
+            <p class="success-subtitle">Your payment has been successfully done.</p>
+            
+            <div class="success-details">
+                <div class="detail-row">
+                    <span class="detail-label">Amount</span>
+                    <span class="detail-value">2,000 THB</span>
+                </div>
+                <div class="detail-row">
+                    <span class="detail-label">Payment Status</span>
+                    <span class="status-success">Success</span>
+                </div>
+            </div>
+
+            <button class="btn btn-receipt" onclick="downloadReceipt()">⬇ Get PDF Receipt</button>
+            <a href="index.html" class="btn btn-done">Done</a>
+        </div>
+    </div>
+
+    <script src="../scripts/app.js"></script>
+</body>
+</html>
