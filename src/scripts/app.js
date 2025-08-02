@@ -94,14 +94,14 @@ async function main() {
             // ใน LINE app ให้ดึงข้อมูล profile ได้เลย
             if (liff.isLoggedIn()) {
                 liffProfile = await liff.getProfile();
-                updateUserProfile();
+                getUserProfile();
             }
         } else {
             console.log('Opening in external browser');
             // ใน browser ต้องล็อกอินก่อน
             if (liff.isLoggedIn()) {
                 liffProfile = await liff.getProfile();
-                updateUserProfile();
+                getUserProfile();
             } else {
                 // แสดงปุ่มล็อกอิน
                 showLoginButton();
@@ -115,7 +115,14 @@ async function main() {
             pictureUrl: "../picture/sophia-avatar.svg",
             userId: "sophia_carter"
         };
-        updateUserProfile();
+        // Update profile with mock data
+        if (document.getElementById('pictureUrl')) {
+            document.getElementById('pictureUrl').src = liffProfile.pictureUrl;
+            document.getElementById('displayName').innerHTML = "<b>displayName:</b> " + liffProfile.displayName;
+            document.getElementById('userId').innerHTML = "<b>userId:</b> " + liffProfile.userId;
+            document.getElementById('statusMessage').innerHTML = "<b>statusMessage:</b> Design enthusiast";
+            document.getElementById('email').innerHTML = "<b>email:</b> sophia.carter@email.com";
+        }
     }
 }
 
