@@ -776,7 +776,7 @@ body:has(.profile-page) .container {
 
 .payment-header .close-btn {
     position: absolute;
-    left: 20px;
+    right: 20px; 
     background: none;
     border: none;
     font-size: 24px;
