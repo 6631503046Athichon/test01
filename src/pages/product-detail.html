@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Artiply - Profile</title>
+    <title>Artiply - Product Detail</title>
     <script charset="utf-8" src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
     <link rel="stylesheet" href="../styles/main.css">
 </head>
@@ -13,91 +13,95 @@
         <div class="header">
             <div class="header-left">
                 <a href="index.html" class="back-btn">
-            <img src="../picture/back.svg" alt="Back" width="24" height="24">
-        </a>
-                <div class="header-title">Profile</div>
+                    <img src="../picture/back.svg" alt="Back" width="24" height="24">
+                </a>
+                <div class="header-title">Product Detail</div>
+            </div>
+            <div class="header-right">
+                <button class="share-btn" onclick="shareProduct()">
+                    <img src="../picture/Share.svg" alt="Share" width="24" height="24">
+                </button>
             </div>
         </div>
 
-        <!-- Profile Content -->
-        <div class="profile-page">
-            <div class="profile-header">
-                <div class="profile-avatar">
-                    <img src="../picture/sophia-avatar.svg" alt="Sophia Carter">
+        <!-- Product Detail Content -->
+        <div class="product-detail-page">
+            <!-- Product Image -->
+            <div class="product-image">
+                <div class="product-preview" style="background: #4A6741; padding: 20px; border-radius: 16px; height: 250px;">
+                    <div style="background: white; border-radius: 12px; padding: 20px; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;">
+                        <img src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 150 100'><defs><linearGradient id='mountain' x1='0%' y1='0%' x2='100%' y2='100%'><stop offset='0%' style='stop-color:%2387CEEB;stop-opacity:1' /><stop offset='50%' style='stop-color:%23228B22;stop-opacity:1' /><stop offset='100%' style='stop-color:%234169E1;stop-opacity:1' /></linearGradient></defs><rect width='150' height='100' fill='%2387CEEB'/><polygon points='0,80 30,40 60,60 90,30 120,50 150,20 150,100 0,100' fill='url(%23mountain)'/><polygon points='20,85 40,70 60,75 80,65 100,70 120,60 140,65 150,70 150,100 0,100' fill='%234169E1'/><circle cx='30' cy='25' r='8' fill='%23FFD700'/></svg>" alt="Mountain Lake" style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px;">
+                    </div>
                 </div>
-                <h2 class="profile-name" id="userName">Sophia Carter</h2>
-                <p class="profile-id" id="userEmail">LINE ID: @sophia_carter</p>
             </div>
 
-            <div class="profile-sections">
-                <div class="profile-section">
-                    <h3 class="section-title">User Information</h3>
-                    <div class="info-list">
-                        <div class="info-item">
-                            <div class="info-icon">
-                                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M3.33333 3.33333H16.6667C17.5833 3.33333 18.3333 4.08333 18.3333 5V15C18.3333 15.9167 17.5833 16.6667 16.6667 16.6667H3.33333C2.41667 16.6667 1.66667 15.9167 1.66667 15V5C1.66667 4.08333 2.41667 3.33333 3.33333 3.33333Z" stroke="#666" stroke-width="1.5"/>
-                                    <path d="M18.3333 5L10 10.8333L1.66667 5" stroke="#666" stroke-width="1.5"/>
-                                </svg>
-                            </div>
-                            <div class="info-content">
-                                <div class="info-label">Email</div>
-                                <div class="info-value">sophia.carter@email.com</div>
-                            </div>
-                        </div>
-                        <div class="info-item">
-                            <div class="info-icon">
-                                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M3.33333 5H16.6667C17.5833 5 18.3333 5.75 18.3333 6.66667V15C18.3333 15.9167 17.5833 16.6667 16.6667 16.6667H3.33333C2.41667 16.6667 1.66667 15.9167 1.66667 15V6.66667C1.66667 5.75 2.41667 5 3.33333 5Z" stroke="#666" stroke-width="1.5"/>
-                                    <path d="M5 8.33333H15" stroke="#666" stroke-width="1.5"/>
-                                    <path d="M5 11.6667H10" stroke="#666" stroke-width="1.5"/>
-                                </svg>
-                            </div>
-                            <div class="info-content">
-                                <div class="info-label">Bio</div>
-                                <div class="info-value">Bio: Design enthusiast</div>
-                            </div>
-                        </div>
+            <!-- Product Info -->
+            <div class="product-info-section">
+                <div class="product-header">
+                    <h1 class="product-title">Modern Business Presentation</h1>
+                    <div class="product-author">
+                        <div class="author-avatar"></div>
+                        <span>By Notty</span>
                     </div>
                 </div>
 
-                <div class="profile-section">
-                    <h3 class="section-title">Usage Summary</h3>
-                    <div class="usage-list">
-                        <div class="usage-item">
-                            <div class="usage-icon">
-                                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M10 1.66667L12.575 6.88333L18.3333 7.725L14.1667 11.7833L15.15 17.5167L10 14.8167L4.85 17.5167L5.83333 11.7833L1.66667 7.725L7.425 6.88333L10 1.66667Z" stroke="#666" stroke-width="1.5"/>
-                                </svg>
-                            </div>
-                            <div class="usage-content">
-                                <div class="usage-title">Remaining Free Trials</div>
-                                <div class="usage-count">3</div>
-                            </div>
-                        </div>
-                        <div class="usage-item">
-                            <div class="usage-icon">
-                                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M5 5H15C16.1046 5 17 5.89543 17 7V15C17 16.1046 16.1046 17 15 17H5C3.89543 17 3 16.1046 3 15V7C3 5.89543 3.89543 5 5 5Z" stroke="#666" stroke-width="1.5"/>
-                                    <path d="M7 3V7" stroke="#666" stroke-width="1.5"/>
-                                    <path d="M13 3V7" stroke="#666" stroke-width="1.5"/>
-                                    <path d="M3 11H17" stroke="#666" stroke-width="1.5"/>
-                                </svg>
-                            </div>
-                            <div class="usage-content">
-                                <div class="usage-title">Purchased Designs</div>
-                                <div class="usage-count">15</div>
-                            </div>
-                        </div>
-                    </div>
+                <div class="product-price-section">
+                    <div class="product-price">2,000 THB</div>
+                    <div class="product-category">Business Template</div>
                 </div>
 
-                <div class="profile-section">
-                    <h3 class="section-title">Designer Status</h3>
-                    <div class="action-buttons-profile">
-                        <button class="btn-profile btn-become-designer" onclick="becomeDesigner()">Become a Designer</button>
-                        <button class="btn-profile btn-logout" onclick="logout()">Logout</button>
+                <div class="product-description">
+                    <h3>Description</h3>
+                    <p>Designed to suit a wide range of businesses, whether it's a clothing store, café, cosmetics brand, or creative studio. This modern presentation template features clean layouts, professional typography, and versatile design elements that can be easily customized to match your brand identity.</p>
+                    
+                    <h4>What's included:</h4>
+                    <ul>
+                        <li>50+ Unique slides</li>
+                        <li>Master layouts and templates</li>
+                        <li>Easy-to-edit text and images</li>
+                        <li>Professional color schemes</li>
+                        <li>Compatible with PowerPoint and Keynote</li>
+                    </ul>
+                </div>
+
+                <div class="product-features">
+                    <div class="feature-item">
+                        <div class="feature-icon">📱</div>
+                        <div class="feature-text">Mobile Optimized</div>
                     </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">✏️</div>
+                        <div class="feature-text">Easy to Edit</div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">🎨</div>
+                        <div class="feature-text">Professional Design</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="product-actions">
+                <button class="btn btn-outline" onclick="addToCart()">Add to Cart</button>
+                <button class="btn btn-primary" onclick="buyNow()">Buy Now</button>
+            </div>
+
+            <!-- Designer Info -->
+            <div class="designer-info">
+                <h3>About the Designer</h3>
+                <div class="designer-card">
+                    <div class="designer-avatar">
+                        <img src="../picture/sophia-avatar.svg" alt="Notty">
+                    </div>
+                    <div class="designer-details">
+                        <div class="designer-name">Notty</div>
+                        <div class="designer-bio">Professional graphic designer with 5+ years of experience in creating modern business presentations and brand identities.</div>
+                        <div class="designer-stats">
+                            <span>150+ Designs</span>
+                            <span>4.9★ Rating</span>
+                        </div>
+                    </div>
+                    <button class="btn btn-follow" onclick="addDesigner()">Follow</button>
                 </div>
             </div>
         </div>
@@ -116,10 +120,39 @@
                 <img src="../picture/history-icon.svg" alt="History" width="24" height="24">
                 <span>History</span>
             </a>
-            <div class="nav-item active">
+            <a href="profile.html" class="nav-item">
                 <img src="../picture/profile-icon.svg" alt="Profile" width="24" height="24">
                 <span>Profile</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- Payment Modal -->
+    <div class="payment-modal" id="paymentModal">
+        <div class="payment-modal-content">
+            <div class="payment-header">
+                <h3>Buy Now</h3>
+                <button class="close-btn" onclick="closePayment()">&times;</button>
             </div>
+            <div class="payment-summary">
+                <div class="summary-item">
+                    <span>Modern Business Presentation</span>
+                    <span>2,000 THB</span>
+                </div>
+                <div class="summary-total">
+                    <span>Total</span>
+                    <span>2,000 THB</span>
+                </div>
+            </div>
+            <div class="payment-methods">
+                <div class="payment-method active" onclick="selectPayment(this)">
+                    <span>💳 Credit Card</span>
+                </div>
+                <div class="payment-method" onclick="selectPayment(this)">
+                    <span>📱 LINE Pay</span>
+                </div>
+            </div>
+            <button class="btn btn-primary" onclick="confirmPayment()">Confirm Payment</button>
         </div>
     </div>
 

@@ -47,6 +47,8 @@ async function initializeLiff() {
     try {
         await liff.init({ liffId: '2007868119-pAKjVanQ' });
         console.log('LIFF init succeeded');
+        console.log('Current URL:', window.location.href);
+        console.log('Page pathname:', window.location.pathname);
         
         // เปลี่ยนสีพื้นหลังตาม OS
         const body = document.body;
@@ -82,6 +84,7 @@ async function initializeLiff() {
         }
     } catch (error) {
         console.log('LIFF initialization failed:', error);
+        console.log('Current URL after error:', window.location.href);
         // ใช้ mock data
         liffProfile = {
             displayName: "Sophia Carter",
@@ -793,11 +796,23 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 100);
     
     // Check which page we're on
+    console.log('🔍 Checking current page:', window.location.pathname);
+    
     if (window.location.pathname.includes('payment.html')) {
+        console.log('📄 Initializing payment page');
         initializePaymentPage();
     } else if (window.location.pathname.includes('my-designs.html')) {
+        console.log('🎨 Initializing my-designs page');
         initializeMyDesigns();
+    } else if (window.location.pathname.includes('index.html') || window.location.pathname.endsWith('/')) {
+        console.log('🏠 Initializing index page');
+        initializeSearchAndFilter();
+        // Extra setup for index page
+        setTimeout(() => {
+            setupDesignCardNavigation();
+        }, 200);
     } else {
+        console.log('📋 Initializing default page');
         initializeSearchAndFilter();
     }
 });
@@ -1151,6 +1166,42 @@ function checkDesignerStatus() {
 function resetToNormalProfile() {
     localStorage.removeItem('isDesigner');
     location.reload(); // รีเฟรชหน้าเพื่อแสดงโปรไฟล์ปกติ
+}
+
+// Fix design card navigation
+function setupDesignCardNavigation() {
+    console.log('🔧 Setting up design card navigation...');
+    
+    // Wait for DOM to be ready
+    setTimeout(() => {
+        const designCards = document.querySelectorAll('.design-card');
+        console.log('📋 Found', designCards.length, 'design cards');
+        
+        designCards.forEach((card, index) => {
+            // Remove any existing event listeners
+            card.removeEventListener('click', handleDesignCardClick);
+            
+            // Add new event listener
+            card.addEventListener('click', handleDesignCardClick);
+            console.log(`✅ Setup navigation for card ${index + 1}`);
+        });
+    }, 100);
+}
+
+function handleDesignCardClick(event) {
+    event.preventDefault();
+    event.stopPropagation();
+    
+    console.log('🎯 Design card clicked!');
+    console.log('Current URL:', window.location.href);
+    console.log('Target:', event.currentTarget.href);
+    
+    // Force navigation to product detail page
+    const targetUrl = event.currentTarget.getAttribute('href');
+    console.log('🔄 Navigating to:', targetUrl);
+    
+    // Clear any existing navigation state
+    window.location.href = targetUrl;
 }
 
 // Initialize app
