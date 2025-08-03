@@ -1197,10 +1197,20 @@ function handleDesignCardClick(event) {
     console.log('Target:', event.currentTarget.href);
     
     // Force navigation to product detail page
-    const targetUrl = event.currentTarget.getAttribute('href');
-    console.log('🔄 Navigating to:', targetUrl);
+    let targetUrl = event.currentTarget.getAttribute('href');
+    console.log('🔄 Original target:', targetUrl);
     
-    // Clear any existing navigation state
+    // Ensure correct path based on current location
+    if (window.location.pathname === '/' || window.location.pathname.endsWith('/')) {
+        // We're at root, keep the path as is
+        console.log('✅ At root, using path:', targetUrl);
+    } else if (window.location.pathname.includes('/src/pages/')) {
+        // We're in pages folder, adjust path
+        targetUrl = targetUrl.replace('src/pages/', '');
+        console.log('🔄 Adjusted path:', targetUrl);
+    }
+    
+    console.log('🚀 Final navigation to:', targetUrl);
     window.location.href = targetUrl;
 }
 
