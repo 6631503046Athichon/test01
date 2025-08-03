@@ -26,11 +26,14 @@
 
         <!-- Product Detail Content -->
         <div class="product-detail-page">
-            <!-- Product Image -->
-            <div class="product-image">
-                <div class="product-preview" style="background: #4A6741; padding: 20px; border-radius: 16px; height: 250px;">
-                    <div style="background: white; border-radius: 12px; padding: 20px; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;">
-                        <img src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 150 100'><defs><linearGradient id='mountain' x1='0%' y1='0%' x2='100%' y2='100%'><stop offset='0%' style='stop-color:%2387CEEB;stop-opacity:1' /><stop offset='50%' style='stop-color:%23228B22;stop-opacity:1' /><stop offset='100%' style='stop-color:%234169E1;stop-opacity:1' /></linearGradient></defs><rect width='150' height='100' fill='%2387CEEB'/><polygon points='0,80 30,40 60,60 90,30 120,50 150,20 150,100 0,100' fill='url(%23mountain)'/><polygon points='20,85 40,70 60,75 80,65 100,70 120,60 140,65 150,70 150,100 0,100' fill='%234169E1'/><circle cx='30' cy='25' r='8' fill='%23FFD700'/></svg>" alt="Mountain Lake" style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px;">
+            <!-- Logo Section -->
+            <div class="logo-section">
+                <div class="logo-container" style="background: #F5F0E8; padding: 60px 20px; border-radius: 16px; text-align: center; margin-bottom: 20px;">
+                    <div style="font-family: 'Georgia', serif; font-size: 28px; color: #8B7355; font-weight: 300; letter-spacing: 2px;">
+                        Borcelle
+                        <div style="font-size: 12px; margin-top: 5px; color: #B5A490; letter-spacing: 1px;">
+                            COSMETICS
+                        </div>
                     </div>
                 </div>
             </div>
@@ -38,71 +41,71 @@
             <!-- Product Info -->
             <div class="product-info-section">
                 <div class="product-header">
-                    <h1 class="product-title">Modern Business Presentation</h1>
-                    <div class="product-author">
-                        <div class="author-avatar"></div>
-                        <span>By Notty</span>
-                    </div>
-                </div>
-
-                <div class="product-price-section">
-                    <div class="product-price">2,000 THB</div>
-                    <div class="product-category">Business Template</div>
+                    <h1 class="product-title" style="font-size: 24px; font-weight: 600; margin-bottom: 15px;">Minimalist Logo</h1>
+                    <div class="product-price" style="font-size: 20px; font-weight: 600; color: #333; margin-bottom: 15px;">2000 THB</div>
                 </div>
 
                 <div class="product-description">
-                    <h3>Description</h3>
-                    <p>Designed to suit a wide range of businesses, whether it's a clothing store, café, cosmetics brand, or creative studio. This modern presentation template features clean layouts, professional typography, and versatile design elements that can be easily customized to match your brand identity.</p>
-                    
-                    <h4>What's included:</h4>
-                    <ul>
-                        <li>50+ Unique slides</li>
-                        <li>Master layouts and templates</li>
-                        <li>Easy-to-edit text and images</li>
-                        <li>Professional color schemes</li>
-                        <li>Compatible with PowerPoint and Keynote</li>
-                    </ul>
-                </div>
-
-                <div class="product-features">
-                    <div class="feature-item">
-                        <div class="feature-icon">📱</div>
-                        <div class="feature-text">Mobile Optimized</div>
-                    </div>
-                    <div class="feature-item">
-                        <div class="feature-icon">✏️</div>
-                        <div class="feature-text">Easy to Edit</div>
-                    </div>
-                    <div class="feature-item">
-                        <div class="feature-icon">🎨</div>
-                        <div class="feature-text">Professional Design</div>
-                    </div>
+                    <p style="color: #666; line-height: 1.6; margin-bottom: 20px;">Designed to suit a wide range of businesses, whether it's a clothing store, café, cosmetics brand, or creative studio.</p>
                 </div>
             </div>
 
             <!-- Action Buttons -->
-            <div class="product-actions">
-                <button class="btn btn-outline" onclick="addToCart()">Add to Cart</button>
-                <button class="btn btn-primary" onclick="buyNow()">Buy Now</button>
+            <div class="product-actions" style="padding: 0 20px; margin-bottom: 20px;">
+                <button class="btn-buy-now" onclick="buyNow()" style="
+                    width: 100%;
+                    background: #2ECC71;
+                    color: white;
+                    border: none;
+                    padding: 16px;
+                    border-radius: 8px;
+                    font-size: 16px;
+                    font-weight: 600;
+                    margin-bottom: 12px;
+                    cursor: pointer;
+                ">Buy Now</button>
+                
+                <button class="btn-add-cart" onclick="addToCart()" style="
+                    width: 100%;
+                    background: white;
+                    color: #2ECC71;
+                    border: 2px solid #2ECC71;
+                    padding: 16px;
+                    border-radius: 8px;
+                    font-size: 16px;
+                    font-weight: 600;
+                    margin-bottom: 20px;
+                    cursor: pointer;
+                ">Add to Cart</button>
             </div>
 
-            <!-- Designer Info -->
-            <div class="designer-info">
-                <h3>About the Designer</h3>
-                <div class="designer-card">
-                    <div class="designer-avatar">
-                        <img src="../../src/picture/sophia-avatar.svg" alt="Notty">
-                    </div>
-                    <div class="designer-details">
-                        <div class="designer-name">Notty</div>
-                        <div class="designer-bio">Professional graphic designer with 5+ years of experience in creating modern business presentations and brand identities.</div>
-                        <div class="designer-stats">
-                            <span>150+ Designs</span>
-                            <span>4.9★ Rating</span>
-                        </div>
-                    </div>
-                    <button class="btn btn-follow" onclick="addDesigner()">Follow</button>
-                </div>
+            <!-- Quote Section -->
+            <div class="quote-section" style="
+                background: white;
+                border-radius: 12px;
+                padding: 20px;
+                margin: 0 20px 20px 20px;
+                box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            ">
+                <p style="
+                    color: #666;
+                    font-style: italic;
+                    line-height: 1.5;
+                    margin-bottom: 15px;
+                    font-size: 14px;
+                ">"Looks like you like Notty's work, right? Why not get to know other art? Ask us on LINE!"</p>
+                
+                <button class="btn-add-notty" onclick="addDesigner()" style="
+                    width: 100%;
+                    background: #2ECC71;
+                    color: white;
+                    border: none;
+                    padding: 12px;
+                    border-radius: 8px;
+                    font-size: 14px;
+                    font-weight: 600;
+                    cursor: pointer;
+                ">Add Notty</button>
             </div>
         </div>
 
@@ -157,5 +160,54 @@
     </div>
 
     <script src="../../src/scripts/app.js"></script>
+    
+    <style>
+        .btn-buy-now:hover {
+            background: #27AE60 !important;
+            transform: translateY(-1px);
+            transition: all 0.2s ease;
+        }
+        
+        .btn-add-cart:hover {
+            background: #f8f9fa !important;
+            transform: translateY(-1px);
+            transition: all 0.2s ease;
+        }
+        
+        .btn-add-notty:hover {
+            background: #27AE60 !important;
+            transform: translateY(-1px);
+            transition: all 0.2s ease;
+        }
+        
+        .share-btn:hover {
+            background: #f5f5f5 !important;
+        }
+        
+        /* Mobile optimization */
+        @media (max-width: 480px) {
+            .container {
+                padding: 10px;
+            }
+            
+            .logo-container {
+                padding: 40px 20px !important;
+            }
+            
+            .product-info-section {
+                margin: 0 10px 20px 10px;
+                padding: 15px;
+            }
+            
+            .product-actions {
+                padding: 0 15px !important;
+            }
+            
+            .quote-section {
+                margin: 0 15px 20px 15px !important;
+                padding: 15px;
+            }
+        }
+    </style>
 </body>
 </html>
