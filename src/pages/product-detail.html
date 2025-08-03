@@ -112,9 +112,14 @@
             </div>
 
                         <!-- Action Buttons -->
-            <div class="product-actions" style="padding: 0 20px; margin-bottom: 20px;">
+            <div class="product-actions" style="
+                padding: 0 20px; 
+                margin-bottom: 20px;
+                display: flex;
+                gap: 12px;
+            ">
                 <button class="btn-buy-now" onclick="buyNow()" style="
-                    width: 100%;
+                    flex: 1;
                     background: #28a745;
                     color: white;
                     border: none;
@@ -122,13 +127,12 @@
                     border-radius: 8px;
                     font-size: 16px;
                     font-weight: 600;
-                    margin-bottom: 12px;
                     cursor: pointer;
                     transition: background 0.2s ease;
                 ">Buy Now</button>
                 
                 <button class="btn-add-cart" onclick="addToCart()" style="
-                    width: 100%;
+                    flex: 1;
                     background: white;
                     color: #28a745;
                     border: 1px solid #28a745;
@@ -136,7 +140,6 @@
                     border-radius: 8px;
                     font-size: 16px;
                     font-weight: 600;
-                    margin-bottom: 20px;
                     cursor: pointer;
                     transition: all 0.2s ease;
                 ">Add to Cart</button>
@@ -181,7 +184,7 @@
             </a>
             <a href="my-designs.html" class="nav-item">
                 <img src="../../src/picture/design-icon.svg" alt="Design" width="24" height="24">
-                <span>My Designs</span>
+                <span>Inventory</span>
             </a>
             <a href="earnings.html" class="nav-item">
                 <img src="../../src/picture/history-icon.svg" alt="History" width="24" height="24">
@@ -266,6 +269,12 @@
             
             .product-actions {
                 padding: 0 16px !important;
+                gap: 8px !important;
+            }
+            
+            .btn-buy-now, .btn-add-cart {
+                padding: 14px 12px !important;
+                font-size: 14px !important;
             }
         }
     </style>
