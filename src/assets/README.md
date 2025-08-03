@@ -4,7 +4,7 @@
 
 ## Navigation Icons (24x24px)
 - `Home.png` - ไอคอนหน้า Dashboard
-- `Design.png` - ไอคอนหน้า My Designs  
+- `Design.png` - ไอคอนหน้า My Inventory  
 - `Upload.png` - ไอคอนหน้า Upload
 - `History.png` - ไอคอนหน้า Earnings/History
 - `Profile.png` - ไอคอนหน้า Profile

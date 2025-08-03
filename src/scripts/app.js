@@ -669,9 +669,9 @@ function deleteDesign(designId) {
     alert('Design deleted successfully!');
 }
 
-// Initialize My Designs page
+    // Initialize My Inventory page
 function initializeMyDesigns() {
-    console.log('🎨 Initializing My Designs page...');
+            console.log('🎨 Initializing My Inventory page...');
     
     // First, load and display designs from localStorage
     loadMyDesigns();
@@ -680,12 +680,12 @@ function initializeMyDesigns() {
     const designTabs = document.querySelectorAll('.designs-tab');
     
     if (!searchInput || !designTabs.length) {
-        console.log('⚠️ My Designs elements not found, retrying in 1s...');
+                    console.log('⚠️ My Inventory elements not found, retrying in 1s...');
         setTimeout(initializeMyDesigns, 1000);
         return;
     }
     
-    console.log('✅ Found all My Designs elements');
+    console.log('✅ Found all My Inventory elements');
     
     function filterDesigns() {
         const searchText = searchInput.value.toLowerCase();
@@ -747,7 +747,7 @@ function initializeMyDesigns() {
     
     // Initial filter
     filterDesigns();
-    console.log('✅ My Designs page initialized');
+    console.log('✅ My Inventory page initialized');
 }
 
 // Initialize payment page
