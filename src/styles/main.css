@@ -735,13 +735,13 @@ body:has(.profile-page) .container {
 .payment-modal {
     position: fixed;
     top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 100%;
-    max-width: 390px;
-    height: 100%;
-    background: white;
-    display: none;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0,0,0,0.5);
     z-index: 1000;
 }
 
