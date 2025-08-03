@@ -6,57 +6,285 @@
     <title>Payment - Artiply</title>
     <script charset="utf-8" src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
     <link rel="stylesheet" href="../styles/main.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
-<body>
+<body style="background: #f8f9fa; min-height: 100vh; font-family: 'Inter', sans-serif;">
     <div class="container">
-        <div class="header">
-            <div class="header-left">
-                <a href="cart.html" class="back-btn">
-                    <img src="../picture/back.svg" alt="Back" width="24" height="24">
-                </a>
-                <div class="header-title">Confirm Your Purchase</div>
-            </div>
+        <div class="header" style="
+            background: white;
+            padding: 16px 20px;
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid #e9ecef;
+        ">
+            <a href="cart.html" class="back-btn" style="
+                display: flex;
+                align-items: center;
+                text-decoration: none;
+                color: #333;
+                font-weight: 500;
+                margin-right: 16px;
+            ">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="m15 18-6-6 6-6"/>
+                </svg>
+            </a>
+            <h1 style="
+                font-size: 20px;
+                font-weight: 600;
+                color: #333;
+                margin: 0;
+            ">Confirm Your Purchase</h1>
         </div>
         <div class="payment-content" style="padding: 20px;">
-            <div class="design-summary">
-                <h4>Design Summary</h4>
-                <div id="payment-items">
-                    <!-- Items will be dynamically loaded here -->
+            <div class="design-summary" style="
+                background: white;
+                border-radius: 12px;
+                padding: 20px;
+                margin-bottom: 20px;
+                box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            ">
+                <h4 style="
+                    color: #999;
+                    font-size: 14px;
+                    font-weight: 400;
+                    margin: 0 0 16px 0;
+                    text-transform: uppercase;
+                    letter-spacing: 0.5px;
+                ">Design Summary</h4>
+                
+                <div class="product-item" style="
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                ">
+                    <div class="product-info" style="display: flex; align-items: center; gap: 16px;">
+                        <div class="product-icon" style="
+                            width: 60px;
+                            height: 60px;
+                            background: #f5c6cb;
+                            border-radius: 12px;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                        ">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                                <rect width="18" height="18" x="3" y="3" rx="2"/>
+                                <path d="M9 9h6v6H9z"/>
+                            </svg>
+                        </div>
+                        <div class="product-details">
+                            <h3 style="
+                                font-size: 18px;
+                                font-weight: 600;
+                                color: #333;
+                                margin: 0 0 4px 0;
+                            ">Minimalist Logo #1</h3>
+                            <p style="
+                                font-size: 14px;
+                                color: #666;
+                                margin: 0;
+                            ">2,000 THB</p>
+                        </div>
+                    </div>
                 </div>
             </div>
             
-            <div class="payment-methods">
-                <h4>Payment Method</h4>
-                <div class="payment-method active" onclick="selectPayment(this)">
-                    <div class="payment-method-info">LINE Pay</div>
-                    <div class="payment-method-check"></div>
+            <div class="payment-methods" style="margin-bottom: 24px;">
+                <h4 style="
+                    color: #333;
+                    font-size: 18px;
+                    font-weight: 600;
+                    margin: 0 0 16px 0;
+                ">Payment Method</h4>
+                
+                <div class="payment-method active" onclick="selectPayment(this)" style="
+                    background: white;
+                    border: 2px solid #28a745;
+                    border-radius: 12px;
+                    padding: 16px 20px;
+                    margin-bottom: 12px;
+                    cursor: pointer;
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    transition: all 0.2s ease;
+                    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+                ">
+                    <span style="
+                        font-size: 16px;
+                        font-weight: 500;
+                        color: #333;
+                    ">LINE Pay</span>
+                    <div class="radio-selected" style="
+                        width: 20px;
+                        height: 20px;
+                        border-radius: 50%;
+                        background: #28a745;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                    ">
+                        <div style="
+                            width: 8px;
+                            height: 8px;
+                            border-radius: 50%;
+                            background: white;
+                        "></div>
+                    </div>
                 </div>
                 
-                <div class="payment-method" onclick="selectPayment(this)">
-                    <div class="payment-method-info">PromptPay</div>
-                    <div class="payment-method-check"></div>
+                <div class="payment-method" onclick="selectPayment(this)" style="
+                    background: white;
+                    border: 1px solid #e9ecef;
+                    border-radius: 12px;
+                    padding: 16px 20px;
+                    cursor: pointer;
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    transition: all 0.2s ease;
+                    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+                ">
+                    <span style="
+                        font-size: 16px;
+                        font-weight: 500;
+                        color: #333;
+                    ">PromptPay</span>
+                    <div class="radio-unselected" style="
+                        width: 20px;
+                        height: 20px;
+                        border: 2px solid #e9ecef;
+                        border-radius: 50%;
+                        background: white;
+                    "></div>
                 </div>
             </div>
             
-            <div class="total-section">
-                <h4>Total</h4>
-                <div class="total-row">
-                    <span>Subtotal</span>
-                    <span id="payment-subtotal">0 THB</span>
+            <div class="total-section" style="margin-bottom: 32px;">
+                <h4 style="
+                    color: #333;
+                    font-size: 18px;
+                    font-weight: 600;
+                    margin: 0 0 16px 0;
+                ">Total</h4>
+                
+                <div class="total-row" style="
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    margin-bottom: 12px;
+                ">
+                    <span style="
+                        font-size: 16px;
+                        color: #333;
+                        font-weight: 500;
+                    ">Subtotal</span>
+                    <span style="
+                        font-size: 16px;
+                        color: #333;
+                        font-weight: 600;
+                    ">2,000 THB</span>
                 </div>
-                <div class="total-row">
-                    <span>Total</span>
-                    <span id="payment-total">0 THB</span>
+                
+                <div class="total-row" style="
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    margin-bottom: 8px;
+                    padding-bottom: 12px;
+                    border-bottom: 1px solid #e9ecef;
+                ">
+                    <span style="
+                        font-size: 18px;
+                        color: #333;
+                        font-weight: 600;
+                    ">Total</span>
+                    <span style="
+                        font-size: 18px;
+                        color: #333;
+                        font-weight: 700;
+                    ">2,000 THB</span>
                 </div>
-                <div class="total-row vat">
-                    <span>VAT included</span>
-                </div>
+                
+                <p style="
+                    font-size: 14px;
+                    color: #999;
+                    margin: 8px 0 0 0;
+                ">VAT included</p>
             </div>
             
-            <button class="btn btn-primary" onclick="confirmPayment()">Confirm Payment</button>
-            <p class="redirect-note">You will be redirected to payment service.</p>
+            <button onclick="confirmPayment()" style="
+                width: 100%;
+                background: #28a745;
+                color: white;
+                border: none;
+                padding: 16px;
+                border-radius: 12px;
+                font-size: 16px;
+                font-weight: 600;
+                cursor: pointer;
+                margin-bottom: 16px;
+                transition: background 0.2s ease;
+                box-shadow: 0 4px 12px rgba(40, 167, 69, 0.3);
+            ">Confirm Payment</button>
+            
+            <p style="
+                text-align: center;
+                font-size: 14px;
+                color: #666;
+                margin: 0;
+                line-height: 1.4;
+            ">You will be redirected to payment service.</p>
         </div>
     </div>
     <script src="../scripts/app.js"></script>
+    
+    <style>
+        /* Payment page specific styles */
+        .payment-method:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15) !important;
+        }
+        
+        .payment-method.active {
+            background: #f8fff9 !important;
+        }
+        
+        button:hover {
+            background: #218838 !important;
+            transform: translateY(-1px);
+            box-shadow: 0 6px 16px rgba(40, 167, 69, 0.4) !important;
+        }
+        
+        .back-btn:hover {
+            opacity: 0.7;
+        }
+        
+        /* Mobile optimization */
+        @media (max-width: 480px) {
+            .payment-content {
+                padding: 16px !important;
+            }
+            
+            .design-summary {
+                padding: 16px !important;
+                margin-bottom: 16px !important;
+            }
+            
+            .product-icon {
+                width: 50px !important;
+                height: 50px !important;
+            }
+            
+            .product-details h3 {
+                font-size: 16px !important;
+            }
+            
+            .payment-method {
+                padding: 14px 16px !important;
+            }
+        }
+    </style>
 </body>
 </html>
