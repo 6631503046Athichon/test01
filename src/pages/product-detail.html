@@ -6,317 +6,170 @@
     <title>Artiply - Product Detail</title>
     <script charset="utf-8" src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
     <link rel="stylesheet" href="../../src/styles/main.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
-<body style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); min-height: 100vh;">
+<body style="background: #f8f9fa; min-height: 100vh; font-family: 'Inter', sans-serif;">
     <div class="container">
         <!-- Header -->
         <div class="header" style="
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 0 0 20px 20px;
-            padding: 20px;
-            margin-bottom: 20px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            background: white;
+            padding: 16px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid #e9ecef;
         ">
-            <div class="header-left">
-                <a href="../../index.html" class="back-btn" style="
-                    background: rgba(255, 255, 255, 0.2);
-                    border-radius: 12px;
-                    padding: 12px;
-                    border: 1px solid rgba(255, 255, 255, 0.3);
-                    transition: all 0.3s ease;
-                ">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
-                        <path d="m15 18-6-6 6-6"/>
-                    </svg>
-                </a>
-                <div class="header-title" style="
-                    color: white;
-                    font-family: 'Inter', sans-serif;
-                    font-weight: 600;
-                    font-size: 18px;
-                    text-shadow: 0 2px 4px rgba(0,0,0,0.1);
-                ">Product Detail</div>
-            </div>
-            <div class="header-right">
-                <button class="share-btn" onclick="shareProduct()" style="
-                    background: rgba(255, 255, 255, 0.2);
-                    border-radius: 12px;
-                    padding: 12px;
-                    border: 1px solid rgba(255, 255, 255, 0.3);
-                    transition: all 0.3s ease;
-                ">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
-                        <circle cx="18" cy="5" r="3"/>
-                        <circle cx="6" cy="12" r="3"/>
-                        <circle cx="18" cy="19" r="3"/>
-                        <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/>
-                        <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/>
-                    </svg>
-                </button>
-            </div>
+            <a href="../../index.html" class="back-btn" style="
+                display: flex;
+                align-items: center;
+                text-decoration: none;
+                color: #333;
+                font-weight: 500;
+            ">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 4px;">
+                    <path d="m15 18-6-6 6-6"/>
+                </svg>
+            </a>
+            <button class="share-btn" onclick="shareProduct()" style="
+                background: none;
+                border: none;
+                color: #333;
+                cursor: pointer;
+            ">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="18" cy="5" r="3"/>
+                    <circle cx="6" cy="12" r="3"/>
+                    <circle cx="18" cy="19" r="3"/>
+                    <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/>
+                    <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/>
+                </svg>
+            </button>
         </div>
 
         <!-- Product Detail Content -->
         <div class="product-detail-page">
-            <!-- Logo Section -->
-            <div class="logo-section" style="margin: 0 20px 30px 20px;">
+                        <!-- Logo Section -->
+            <div class="logo-section" style="margin: 30px 20px;">
                 <div class="logo-container" style="
-                    background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+                    background: #f5f0e8;
                     padding: 80px 20px;
-                    border-radius: 24px;
+                    border-radius: 12px;
                     text-align: center;
-                    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-                    border: 1px solid rgba(255, 255, 255, 0.3);
-                    position: relative;
-                    overflow: hidden;
                 ">
-                    <!-- Decorative elements -->
                     <div style="
-                        position: absolute;
-                        top: -50px;
-                        right: -50px;
-                        width: 100px;
-                        height: 100px;
-                        background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
-                        border-radius: 50%;
-                    "></div>
-                    <div style="
-                        position: absolute;
-                        bottom: -30px;
-                        left: -30px;
-                        width: 60px;
-                        height: 60px;
-                        background: radial-gradient(circle, rgba(255,255,255,0.08) 0%, transparent 70%);
-                        border-radius: 50%;
-                    "></div>
-                    
-                    <div style="
-                        font-family: 'Playfair Display', serif;
-                        font-size: 36px;
-                        color: #8B4513;
-                        font-weight: 500;
-                        letter-spacing: 3px;
-                        text-shadow: 0 2px 4px rgba(0,0,0,0.1);
-                        position: relative;
-                        z-index: 2;
+                        font-family: 'Inter', sans-serif;
+                        font-size: 32px;
+                        color: #b8956a;
+                        font-weight: 400;
+                        letter-spacing: 1px;
                     ">
                         Borcelle
                         <div style="
-                            font-family: 'Inter', sans-serif;
-                            font-size: 11px;
+                            font-size: 10px;
                             margin-top: 8px;
-                            color: #A0522D;
-                            letter-spacing: 2px;
+                            color: #b8956a;
+                            letter-spacing: 4px;
                             font-weight: 300;
-                            opacity: 0.8;
                         ">
-                            C O S M E T I C S
-                            </div>
+                            COSMETICS
                         </div>
                     </div>
                 </div>
+            </div>
 
-            <!-- Product Info -->
+                        <!-- Product Info -->
             <div class="product-info-section" style="
-                background: rgba(255, 255, 255, 0.95);
-                backdrop-filter: blur(20px);
-                border-radius: 24px;
-                padding: 30px;
-                margin: 0 20px 30px 20px;
-                box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-                border: 1px solid rgba(255, 255, 255, 0.3);
-                position: relative;
-                overflow: hidden;
+                background: white;
+                padding: 20px;
+                margin: 0 20px 20px 20px;
             ">
-                <!-- Background pattern -->
-                <div style="
-                    position: absolute;
-                    top: 0;
-                    left: 0;
-                    right: 0;
-                    bottom: 0;
-                    background-image: radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.05) 0%, transparent 50%),
-                                      radial-gradient(circle at 80% 20%, rgba(255, 177, 153, 0.05) 0%, transparent 50%);
-                    pointer-events: none;
-                "></div>
+                <h1 style="
+                    font-size: 24px;
+                    font-weight: 600;
+                    color: #333;
+                    margin-bottom: 4px;
+                ">Minimalist Logo</h1>
                 
-                <div class="product-header" style="position: relative; z-index: 2;">
-                    <h1 class="product-title" style="
-                        font-family: 'Inter', sans-serif;
-                        font-size: 28px;
-                        font-weight: 700;
-                        margin-bottom: 12px;
-                        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-                        -webkit-background-clip: text;
-                        -webkit-text-fill-color: transparent;
-                        background-clip: text;
-                    ">Minimalist Logo</h1>
-                    
-                    <div style="
-                        display: flex;
-                        align-items: center;
-                        margin-bottom: 20px;
-                        gap: 12px;
-                    ">
-                        <span style="
-                            font-family: 'Inter', sans-serif;
-                            font-size: 24px;
-                            font-weight: 600;
-                            color: #2ECC71;
-                        ">2,000 THB</span>
-                        <span style="
-                            background: linear-gradient(135deg, #2ECC71, #27AE60);
-                            color: white;
-                            padding: 6px 12px;
-                            border-radius: 20px;
-                            font-size: 12px;
-                            font-weight: 500;
-                            text-transform: uppercase;
-                            letter-spacing: 0.5px;
-                        ">Premium</span>
-                            </div>
-                        </div>
+                <p style="
+                    color: #666;
+                    font-size: 14px;
+                    margin-bottom: 8px;
+                ">By Notty</p>
+                
+                <p style="
+                    font-size: 20px;
+                    font-weight: 600;
+                    color: #333;
+                    margin-bottom: 16px;
+                ">2000 THB</p>
+                
+                <p style="
+                    color: #666;
+                    line-height: 1.5;
+                    font-size: 15px;
+                    margin-bottom: 0;
+                ">Designed to suit a wide range of businesses, whether it's a clothing store, café, cosmetics brand, or creative studio.</p>
+            </div>
 
-                <div class="product-description" style="position: relative; z-index: 2;">
-                    <p style="
-                        color: #555;
-                        line-height: 1.7;
-                        margin-bottom: 20px;
-                        font-family: 'Inter', sans-serif;
-                        font-size: 15px;
-                        font-weight: 400;
-                    ">Designed to suit a wide range of businesses, whether it's a clothing store, café, cosmetics brand, or creative studio.</p>
-                    </div>
-                </div>
-
-            <!-- Action Buttons -->
-            <div class="product-actions" style="padding: 0 20px; margin-bottom: 30px;">
+                        <!-- Action Buttons -->
+            <div class="product-actions" style="padding: 0 20px; margin-bottom: 20px;">
                 <button class="btn-buy-now" onclick="buyNow()" style="
                     width: 100%;
-                    background: linear-gradient(135deg, #2ECC71 0%, #27AE60 100%);
+                    background: #28a745;
                     color: white;
                     border: none;
-                    padding: 18px;
-                    border-radius: 16px;
-                    font-family: 'Inter', sans-serif;
+                    padding: 16px;
+                    border-radius: 8px;
                     font-size: 16px;
                     font-weight: 600;
-                    margin-bottom: 16px;
+                    margin-bottom: 12px;
                     cursor: pointer;
-                    box-shadow: 0 12px 24px rgba(46, 204, 113, 0.3);
-                    position: relative;
-                    overflow: hidden;
-                    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-                ">
-                    <span style="position: relative; z-index: 2;">💚 Buy Now</span>
-                    <div style="
-                        position: absolute;
-                        top: 0;
-                        left: -100%;
-                        width: 100%;
-                        height: 100%;
-                        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-                        transition: left 0.5s;
-                    "></div>
-                </button>
+                    transition: background 0.2s ease;
+                ">Buy Now</button>
                 
                 <button class="btn-add-cart" onclick="addToCart()" style="
                     width: 100%;
-                    background: rgba(255, 255, 255, 0.9);
-                    backdrop-filter: blur(20px);
-                    color: #2ECC71;
-                    border: 2px solid rgba(46, 204, 113, 0.3);
-                    padding: 18px;
-                    border-radius: 16px;
-                    font-family: 'Inter', sans-serif;
+                    background: white;
+                    color: #28a745;
+                    border: 1px solid #28a745;
+                    padding: 16px;
+                    border-radius: 8px;
                     font-size: 16px;
                     font-weight: 600;
                     margin-bottom: 20px;
                     cursor: pointer;
-                    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-                    position: relative;
-                    overflow: hidden;
-                    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-                ">
-                    <span style="position: relative; z-index: 2;">🛒 Add to Cart</span>
-                </button>
-                    </div>
+                    transition: all 0.2s ease;
+                ">Add to Cart</button>
+            </div>
 
             <!-- Quote Section -->
             <div class="quote-section" style="
-                background: rgba(255, 255, 255, 0.95);
-                backdrop-filter: blur(20px);
-                border-radius: 20px;
-                padding: 30px;
-                margin: 0 20px 30px 20px;
-                box-shadow: 0 16px 32px rgba(0,0,0,0.1);
-                border: 1px solid rgba(255, 255, 255, 0.3);
-                position: relative;
-                overflow: hidden;
+                background: white;
+                padding: 20px;
+                margin: 0 20px 20px 20px;
+                border-radius: 8px;
             ">
-                <!-- Floating elements -->
-                <div style="
-                    position: absolute;
-                    top: -20px;
-                    right: -20px;
-                    width: 40px;
-                    height: 40px;
-                    background: linear-gradient(135deg, #FFB347, #FFCC5C);
-                    border-radius: 50%;
-                    opacity: 0.6;
-                "></div>
-                <div style="
-                    position: absolute;
-                    bottom: -15px;
-                    left: -15px;
-                    width: 30px;
-                    height: 30px;
-                    background: linear-gradient(135deg, #98FB98, #90EE90);
-                    border-radius: 50%;
-                    opacity: 0.5;
-                "></div>
+                <p style="
+                    color: #666;
+                    font-style: italic;
+                    line-height: 1.5;
+                    margin-bottom: 16px;
+                    font-size: 14px;
+                    text-align: center;
+                ">"Looks like you like Notty's work, right? Why not get to know each other a bit? Add us on <span style="color: #00c300; font-weight: 500;">LINE</span>!"</p>
                 
-                <div style="position: relative; z-index: 2;">
-                    <div style="
-                        font-size: 40px;
-                        text-align: center;
-                        margin-bottom: 15px;
-                        opacity: 0.1;
-                    ">💬</div>
-                    
-                    <p style="
-                        color: #555;
-                        font-style: italic;
-                        line-height: 1.6;
-                        margin-bottom: 20px;
-                        font-size: 15px;
-                        font-family: 'Inter', sans-serif;
-                        text-align: center;
-                        font-weight: 400;
-                    ">"Looks like you like Notty's work, right? Why not get to know other art? Ask us on LINE!"</p>
-                    
-                    <button class="btn-add-notty" onclick="addDesigner()" style="
-                        width: 100%;
-                        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-                        color: white;
-                        border: none;
-                        padding: 16px;
-                        border-radius: 16px;
-                        font-family: 'Inter', sans-serif;
-                        font-size: 15px;
-                        font-weight: 600;
-                        cursor: pointer;
-                        box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
-                        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-                        position: relative;
-                        overflow: hidden;
-                    ">
-                        <span style="position: relative; z-index: 2;">🎨 Add Notty</span>
-                    </button>
-                </div>
+                <button class="btn-add-notty" onclick="addDesigner()" style="
+                    width: 100%;
+                    background: #28a745;
+                    color: white;
+                    border: none;
+                    padding: 12px;
+                    border-radius: 8px;
+                    font-size: 14px;
+                    font-weight: 600;
+                    cursor: pointer;
+                    transition: background 0.2s ease;
+                ">Add Notty</button>
             </div>
         </div>
 
@@ -373,186 +226,46 @@
     <script src="../../src/scripts/app.js"></script>
     
     <style>
-        /* Enhanced animations and interactions */
+        /* Simple hover effects */
         .btn-buy-now:hover {
-            transform: translateY(-3px) scale(1.02);
-            box-shadow: 0 16px 32px rgba(46, 204, 113, 0.4) !important;
-        }
-        
-        .btn-buy-now:hover div {
-            left: 100%;
+            background: #218838 !important;
         }
         
         .btn-add-cart:hover {
-            transform: translateY(-2px);
-            border-color: #2ECC71 !important;
-            box-shadow: 0 12px 24px rgba(46, 204, 113, 0.2) !important;
+            background: #f8f9fa !important;
+            border-color: #218838 !important;
         }
         
         .btn-add-notty:hover {
-            transform: translateY(-2px) scale(1.02);
-            box-shadow: 0 14px 28px rgba(102, 126, 234, 0.4) !important;
+            background: #218838 !important;
         }
         
         .back-btn:hover, .share-btn:hover {
-            background: rgba(255, 255, 255, 0.3) !important;
-            transform: scale(1.1);
-        }
-        
-        /* Logo floating animation */
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-        }
-        
-        .logo-container {
-            animation: float 6s ease-in-out infinite;
-        }
-        
-        /* Shimmer effect for cards */
-        @keyframes shimmer {
-            0% { transform: translateX(-100%); }
-            100% { transform: translateX(100%); }
-        }
-        
-        .product-info-section::before,
-        .quote-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-            animation: shimmer 3s infinite;
-            pointer-events: none;
-        }
-        
-        /* Pulse animation for floating elements */
-        @keyframes pulse {
-            0%, 100% { opacity: 0.6; transform: scale(1); }
-            50% { opacity: 0.8; transform: scale(1.1); }
-        }
-        
-        .quote-section > div:first-child,
-        .quote-section > div:nth-child(2) {
-            animation: pulse 4s ease-in-out infinite;
-        }
-        
-        /* Gradient text animation */
-        @keyframes gradientShift {
-            0%, 100% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-        }
-        
-        .product-title {
-            background-size: 200% 200%;
-            animation: gradientShift 4s ease infinite;
-        }
-        
-        /* Container entrance animation */
-        .container {
-            animation: fadeInUp 0.8s ease-out;
-        }
-        
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        /* Staggered animations for sections */
-        .logo-section {
-            animation: fadeInUp 0.8s ease-out 0.2s both;
-        }
-        
-        .product-info-section {
-            animation: fadeInUp 0.8s ease-out 0.4s both;
-        }
-        
-        .product-actions {
-            animation: fadeInUp 0.8s ease-out 0.6s both;
-        }
-        
-        .quote-section {
-            animation: fadeInUp 0.8s ease-out 0.8s both;
-        }
-        
-        /* Smooth scrolling */
-        html {
-            scroll-behavior: smooth;
-        }
-        
-        /* Custom scrollbar */
-        ::-webkit-scrollbar {
-            width: 6px;
-        }
-        
-        ::-webkit-scrollbar-track {
-            background: rgba(255, 255, 255, 0.1);
-        }
-        
-        ::-webkit-scrollbar-thumb {
-            background: rgba(255, 255, 255, 0.3);
-            border-radius: 3px;
-        }
-        
-        ::-webkit-scrollbar-thumb:hover {
-            background: rgba(255, 255, 255, 0.5);
+            opacity: 0.7;
         }
         
         /* Mobile optimization */
         @media (max-width: 480px) {
             .container {
-                padding: 5px;
-            }
-            
-            .logo-container {
-                padding: 60px 20px !important;
-                margin: 0 10px 20px 10px;
-            }
-            
-            .product-info-section,
-            .quote-section {
-                margin: 0 10px 20px 10px !important;
-                padding: 20px !important;
-            }
-            
-            .product-actions {
-                padding: 0 15px !important;
+                padding: 0;
             }
             
             .header {
-                border-radius: 0 0 15px 15px !important;
-                margin-bottom: 15px !important;
-                padding: 15px !important;
+                padding: 12px 16px !important;
             }
             
-            .product-title {
-                font-size: 24px !important;
+            .logo-section {
+                margin: 20px 16px !important;
             }
-        }
-        
-        /* Dark mode support */
-        @media (prefers-color-scheme: dark) {
+            
             .product-info-section,
             .quote-section {
-                background: rgba(20, 20, 20, 0.9) !important;
-                color: #fff;
+                margin: 0 16px 16px 16px !important;
+                padding: 16px !important;
             }
             
-            .product-description p {
-                color: #ccc !important;
-            }
-            
-            .btn-add-cart {
-                background: rgba(20, 20, 20, 0.9) !important;
-                color: #2ECC71 !important;
+            .product-actions {
+                padding: 0 16px !important;
             }
         }
     </style>
